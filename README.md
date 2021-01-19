@@ -15,3 +15,5 @@
 ※ 英語
 It's all about my development style.
 ```
+
+_deopleteでRuby補完するための最小構成です..._
