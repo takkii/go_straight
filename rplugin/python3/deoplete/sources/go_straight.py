@@ -11,27 +11,21 @@ from deoplete.source.base import Base
 
 home = expanduser("~")
 
-d1 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/ruby-dictionary3/")
-d2 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/ruby-dictionary3/")
-d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/ruby-dictionary3/")
+d1 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict")
+d2 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict")
+d3 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict")
 
 if os.path.exists(d1):
     ruby_method = open(os.path.expanduser(
-        "~/.config/nvim/.cache/dein/repos/github.com/takkii/ruby-dictionary3/autoload/source/ruby_method_deoplete"))
-    rubymotion_method = open(os.path.expanduser(
-        "~/.config/nvim/.cache/dein/repos/github.com/takkii/ruby-dictionary3/autoload/source/rubymotion_method"))
+        "~/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby-dict"))
 elif os.path.exists(d2):
     ruby_method = open(os.path.expanduser(
-        "~/.config/nvim/repos/github.com/takkii/ruby-dictionary3/autoload/source/ruby_method_deoplete"))
-    rubymotion_method = open(
-        os.path.expanduser("~/.config/nvim/repos/github.com/takkii/ruby-dictionary3/autoload/source/rubymotion_method"))
+        "~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby-dict"))
 elif os.path.exists(d3):
     ruby_method = open(os.path.expanduser(
-        "~/.cache/dein/repos/github.com/takkii/ruby-dictionary3/autoload/source/ruby_method_deoplete"))
-    rubymotion_method = open(
-        os.path.expanduser("~/.cache/dein/repos/github.com/takkii/ruby-dictionary3/autoload/source/rubymotion_method"))
+        "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby-dict"))
 else:
-    print("Don't forget, Install dein plugin manager github repo takkii/ruby-dictionary3.")
+    print("Please, Check the path of go_straight.")
 
 index_ruby = list(ruby_method.readlines()) + list(rubymotion_method.readlines())
 Seri = pd.Series(index_ruby)
