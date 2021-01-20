@@ -16,7 +16,6 @@ d2 = os.path.expanduser("~/.vim/repos/github.com/takkii/go_straight/dict/")
 d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/")
 d4 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
 d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
-d6 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/")
 
 if os.path.isdir(d1):
     ruby_method = open(os.path.expanduser(
@@ -33,9 +32,6 @@ elif os.path.isdir(d4):
 elif os.path.isdir(d5):
     ruby_method = open(os.path.expanduser(
         "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
-elif os.path.isdir(d6):
-    ruby_method = open(os.path.expanduser(
-        "~/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
 else:
     print("Please, Check the path of go_straight.")
 
