@@ -15,13 +15,13 @@ d1 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/
 d2 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
 d3 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
 
-if os.path.exists(d1):
+if os.path.isdir(d1):
     ruby_method = open(os.path.expanduser(
         "~/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
-elif os.path.exists(d2):
+elif os.path.isdir(d2):
     ruby_method = open(os.path.expanduser(
         "~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
-elif os.path.exists(d3):
+elif os.path.isdir(d3):
     ruby_method = open(os.path.expanduser(
         "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
 else:
