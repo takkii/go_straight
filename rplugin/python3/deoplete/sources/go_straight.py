@@ -17,13 +17,13 @@ d3 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict
 
 if os.path.exists(d1):
     ruby_method = open(os.path.expanduser(
-        "~/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby-dict"))
+        "~/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
 elif os.path.exists(d2):
     ruby_method = open(os.path.expanduser(
-        "~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby-dict"))
+        "~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
 elif os.path.exists(d3):
     ruby_method = open(os.path.expanduser(
-        "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby-dict"))
+        "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
 else:
     print("Please, Check the path of go_straight.")
 
