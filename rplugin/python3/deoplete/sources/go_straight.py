@@ -27,13 +27,11 @@ elif os.path.exists(d3):
 else:
     print("Please, Check the path of go_straight.")
 
-index_ruby = list(ruby_method.readlines()) + list(rubymotion_method.readlines())
+index_ruby = list(ruby_method.readlines())
 Seri = pd.Series(index_ruby)
 sort_ruby = Seri.sort_index()
 data_ruby = list(map(lambda s: s.rstrip(), sort_ruby))
 ruby_method.close()
-rubymotion_method.close()
-
 
 # ------------------------------- KEYWORD -------------------------------------------------------------------------
 
