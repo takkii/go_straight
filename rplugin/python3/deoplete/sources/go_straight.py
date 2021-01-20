@@ -33,6 +33,7 @@ sort_ruby = Seri.sort_index()
 data_ruby = list(map(lambda s: s.rstrip(), sort_ruby))
 ruby_method.close()
 
+
 # ------------------------------- KEYWORD -------------------------------------------------------------------------
 
 class Source(Base):
