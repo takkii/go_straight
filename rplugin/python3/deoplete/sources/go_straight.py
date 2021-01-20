@@ -11,9 +11,9 @@ from deoplete.source.base import Base
 
 home = expanduser("~")
 
-d1 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict")
-d2 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict")
-d3 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict")
+d1 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/")
+d2 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
+d3 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
 
 if os.path.exists(d1):
     ruby_method = open(os.path.expanduser(
