@@ -12,12 +12,14 @@ class InstallerClass:
     nump = ['python3', '-m', 'pip', 'install', 'numpy']
     pyn = ['python3', '-m', 'pip', 'install', 'pynvim']
     pan = ['python3', '-m', 'pip', 'install', 'pandas']
+    dask = ['python3', '-m', 'pip', 'install', 'dask[complete]']
 
     msgpy_win = ['python', '-m', 'pip', 'uninstall', 'msgpack-python']
     msg_win = ['python', '-m', 'pip', 'install', 'msgpack==1.0.0']
     nump_win = ['python', '-m', 'pip', 'install', 'numpy']
     pyn_win = ['python', '-m', 'pip', 'install', 'pynvim']
     pan_win = ['python', '-m', 'pip', 'install', 'pandas']
+    dask_win = ['python', '-m', 'pip', 'install', 'dask[complete]']
 
     def msgpy_win_method(self):
         try:
@@ -51,6 +53,13 @@ class InstallerClass:
         try:
             ret_pan_win = subprocess.run(self.pan_win, encoding='utf-8', stderr=subprocess.PIPE)
             print(ret_pan_win)
+        except Exception:
+            traceback.print_exc()
+
+    def dask_win_method(self):
+        try:
+            ret_dask_win = subprocess.run(self.dask_win, encoding='utf-8', stderr=subprocess.PIPE)
+            print(ret_dask_win)
         except Exception:
             traceback.print_exc()
 
@@ -88,6 +97,12 @@ class InstallerClass:
             print(ret_pan)
         except Exception:
             traceback.print_exc()
+    def dask_method(self):
+        try:
+            ret_dask = subprocess.run(self.dask, encoding='utf-8', stderr=subprocess.PIPE)
+            print(ret_dask)
+        except Exception:
+            traceback.print_exc()
 
 
 if sys.version_info[0] == 2:
@@ -102,6 +117,7 @@ elif sys.version_info[0] == 3:
         InstClass.nump_win_method()
         InstClass.pyn_win_method()
         InstClass.pan_win_method()
+        InstClass.dask_win_method()
 
     elif pf == 'Darwin':
         InstClass = InstallerClass()
@@ -110,6 +126,7 @@ elif sys.version_info[0] == 3:
         InstClass.nump_method()
         InstClass.pyn_method()
         InstClass.pan_method()
+        InstClass.dask_method()
 
     elif pf == 'Linux':
         InstClass = InstallerClass()
@@ -118,6 +135,7 @@ elif sys.version_info[0] == 3:
         InstClass.nump_method()
         InstClass.pyn_method()
         InstClass.pan_method()
+        InstClass.dask_method()
 
     else:
         print("Installer does not support OS other than Windows, MacOS and Linux kernel.")
