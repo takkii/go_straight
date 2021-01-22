@@ -3,9 +3,8 @@ import re
 import traceback
 from os.path import expanduser
 
-import pandas as pd
-from pandas import Series, DataFrame
 import dask.dataframe as dd
+import pandas as pd
 from deoplete.source.base import Base
 
 # ------------------------------- KEYWORD -------------------------------------------------------------------------
@@ -40,8 +39,7 @@ else:
 index_ruby = list(ruby_method.readlines())
 Seri = pd.Series(index_ruby)
 sort_ruby = Seri.sort_index()
-frame_ruby = DataFrame(sort_ruby)
-ddf = dd.from_pandas(data=frame_ruby, npartitions=1)
+ddf = dd.from_pandas(data=sort_ruby, npartitions=1)
 data = ddf.to_dask_array(lengths=True)
 data = ddf.compute()
 data_ruby = list(map(lambda s: s.rstrip(), data))
