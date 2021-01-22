@@ -97,6 +97,7 @@ class InstallerClass:
             print(ret_pan)
         except Exception:
             traceback.print_exc()
+
     def dask_method(self):
         try:
             ret_dask = subprocess.run(self.dask, encoding='utf-8', stderr=subprocess.PIPE)
