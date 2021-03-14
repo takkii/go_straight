@@ -1,3 +1,4 @@
+import multiprocessing
 import os
 import re
 import traceback
@@ -39,7 +40,7 @@ else:
 index_ruby = list(ruby_method.readlines())
 Seri = pd.Series(index_ruby)
 sort_ruby = Seri.sort_index()
-ddf = dd.from_pandas(data=sort_ruby, npartitions=1)
+ddf = dd.from_pandas(data=sort_ruby, npartitions=multiprocessing.cpu_count())
 data = ddf.to_dask_array(lengths=True)
 data = ddf.compute()
 data_ruby = list(map(lambda s: s.rstrip(), data))
