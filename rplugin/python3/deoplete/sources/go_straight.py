@@ -56,8 +56,8 @@ class Source(Base):
             Seri = pd.Series(index_ruby)
             sort_ruby = Seri.sort_index()
             ddf = dd.from_pandas(data=sort_ruby, npartitions=multiprocessing.cpu_count())
-            data = ddf.to_dask_array(lengths=True)
-            data = ddf.compute()
+            data_array = ddf.to_dask_array(lengths=True)
+            data = data_array.compute()
             data_ruby = list(map(lambda s: s.rstrip(), data))
             ruby_method.close()
 
