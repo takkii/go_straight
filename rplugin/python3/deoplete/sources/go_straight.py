@@ -59,10 +59,10 @@ class Source(Base):
             data_ruby = list(map(lambda s: s.rstrip(), data))
             ruby_method.close()
 
-            # sorted
+            # sort
             dic = data_ruby
-            dic_sort = sorted(dic, key=itemgetter(0))
-            return dic_sort
+            dic.sort(key=itemgetter(0))
+            return dic
 
         except Exception:
             traceback.print_exc()
