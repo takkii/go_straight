@@ -59,7 +59,7 @@ class Source(Base):
             ruby_method.close()
 
             dic = data_ruby
-            dic_sort = sorted(dic, key=itemgetter(0))
+            dic_sort = dic.sort(key=itemgetter(0))
             return dic_sort
 
         except Exception:
