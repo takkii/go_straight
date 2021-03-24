@@ -13,7 +13,7 @@ class Source(Base):
     def __init__(self, vim):
         super().__init__(vim)
         self.name = 'go_straight'
-        self.filetypes = ['ruby', 'erb']
+        self.filetypes = ['ruby', 'html', 'erb']
         self.mark = '[Go_Straight!]'
         rubymatch = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         regexmatch = [r'[<a-zA-Z(?: .+?)?>.*?<\/a-zA-Z>]']
