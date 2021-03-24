@@ -2,6 +2,7 @@ import multiprocessing
 import os
 import re
 import traceback
+from operator import itemgetter
 from os.path import expanduser
 
 import dask.dataframe as dd
@@ -60,7 +61,7 @@ class Source(Base):
             ruby_method.close()
 
             dic = data_ruby
-            dic_sort = sorted(dic, key=lambda dic: dic[0])
+            dic_sort = dic.sort(key=itemgetter(0))
             return dic_sort
 
         except Exception:
