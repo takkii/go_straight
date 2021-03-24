@@ -49,6 +49,7 @@ class Source(Base):
             else:
                 print("Please, Check the path of go_straight.")
 
+            # pandas and dask
             index_ruby = list(ruby_method.readlines())
             Seri = pd.Series(index_ruby)
             sort_ruby = Seri.sort_index()
@@ -58,8 +59,9 @@ class Source(Base):
             data_ruby = list(map(lambda s: s.rstrip(), data))
             ruby_method.close()
 
+            # sorted
             dic = data_ruby
-            dic_sort = dic.sort(key=itemgetter(0))
+            dic_sort = sorted(dic, key=itemgetter(0))
             return dic_sort
 
         except Exception:
