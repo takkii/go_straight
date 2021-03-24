@@ -3,7 +3,6 @@ import os
 import re
 import traceback
 from operator import itemgetter
-from os.path import expanduser
 
 import dask.dataframe as dd
 import pandas as pd
@@ -61,7 +60,7 @@ class Source(Base):
             ruby_method.close()
 
             dic = data_ruby
-            dic_sort = dic.sort(key=itemgetter(0))
+            dic_sort = sorted(dic, key=itemgetter(0))
             return dic_sort
 
         except Exception:
