@@ -26,8 +26,6 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
-            home = expanduser("~")
-
             d1 = os.path.expanduser("~/.vim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
             d2 = os.path.expanduser("~/.vim/repos/github.com/takkii/go_straight/dict/")
             d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/")
