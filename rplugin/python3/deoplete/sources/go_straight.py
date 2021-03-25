@@ -31,6 +31,8 @@ class Source(Base):
             d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/")
             d4 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
             d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
+
+            # 作業用ブランチ追加
             d6 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight_develop/dict/")
 
             if os.path.isdir(d1):
