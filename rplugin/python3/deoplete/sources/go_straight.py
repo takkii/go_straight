@@ -18,7 +18,7 @@ class Source(Base):
         rubymatch = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         regexmatch = [r'[<a-zA-Z(?: .+?)?>.*?<\/a-zA-Z>]']
         pathmatch = [r'[\/.a-zA-Z0-9_?!.\/]*']
-        self.input_pattern = '|'.join(rubymatch + regexmatch + pathmatch)
+        self.input_pattern = '|'.join(pathmatch + rubymatch + regexmatch)
         self.rank = 500
 
     def get_complete_position(self, context):
