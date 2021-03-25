@@ -31,6 +31,7 @@ class Source(Base):
             d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/")
             d4 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
             d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
+            d6 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight_develop/dict/")
 
             if os.path.isdir(d1):
                 ruby_method = open(os.path.expanduser(
@@ -47,6 +48,12 @@ class Source(Base):
             elif os.path.isdir(d5):
                 ruby_method = open(os.path.expanduser(
                     "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
+
+            # 作業用ブランチ追加
+            elif os.path.isdir(d6):
+                ruby_method = open(os.path.expanduser(
+                    "~/.cache/dein/repos/github.com/takkii/go_straight_develop/dict/ruby_dict"))
+
             else:
                 print("Please, Check the path of go_straight.")
 
@@ -60,7 +67,7 @@ class Source(Base):
             data_ruby = list(map(lambda s: s.rstrip(), data))
             ruby_method.close()
 
-            # sort
+            # sort and itemgetter
             dic = data_ruby
             dic.sort(key=itemgetter(0))
             return dic
