@@ -15,9 +15,9 @@ class Source(Base):
         self.name = 'go_straight'
         self.filetypes = ['ruby']
         self.mark = '[Go_Straight!]'
-        regexmatch = [r'[<a-zA-Z(?: .+?)?>.*?<\/a-zA-Z>]']
-        pathmatch = [r'[\/.a-zA-Z0-9_?!.\/]*']
-        self.input_pattern = '|'.join(pathmatch + regexmatch)
+        ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
+        regex_match = [r'[<a-zA-Z(?: .+?)?>.*?<\/a-zA-Z>]']
+        self.input_pattern = '|'.join(ruby_match + regex_match)
         self.rank = 500
 
     def get_complete_position(self, context):
