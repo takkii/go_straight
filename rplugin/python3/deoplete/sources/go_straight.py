@@ -17,7 +17,8 @@ class Source(Base):
         self.mark = '[Go_Straight!]'
         rubymatch = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         regexmatch = [r'[<a-zA-Z(?: .+?)?>.*?<\/a-zA-Z>]']
-        self.input_pattern = '|'.join(rubymatch + regexmatch)
+        pathmatch = [r'[\/.a-zA-Z0-9_?!.\/]*']
+        self.input_pattern = '|'.join(rubymatch + regexmatch + pathmatch)
         self.rank = 500
 
     def get_complete_position(self, context):
