@@ -50,7 +50,7 @@ class Source(Base):
                     "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
 
             # 作業用ブランチ追加
-            elif os.path.isdir(d5):
+            elif os.path.isdir(d6):
                 ruby_method = open(os.path.expanduser(
                     "~/.cache/dein/repos/github.com/takkii/go_straight_develop/dict/ruby_dict"))
 
