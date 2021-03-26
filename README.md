@@ -17,5 +17,5 @@ LICENSE)[![GitHub release](https://img.shields.io/github/release/takkii/go_strai
 <br />
 <div align="center">
   <b> Copyright (c) 2021 Takayuki Kamiyama </b>
-  <p> Please readme, how to <a href="https://github.com/takkii/go_straight/wiki/%E3%81%BE%E3%81%A3%E3%81%99%E3%81%90%E3%81%AE%E4%BB%95%E6%A7%98">go_straight </a>wiki . </p>
+  <p> Please readme, See the <a href="https://github.com/takkii/go_straight/wiki/%E3%81%BE%E3%81%A3%E3%81%99%E3%81%90%E3%81%AE%E4%BB%95%E6%A7%98">wiki</a> for how to use go_straight. </p>
 </div>
