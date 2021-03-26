@@ -4,7 +4,7 @@ LICENSE)[![GitHub release](https://img.shields.io/github/release/takkii/go_strai
 
 <br />
 
-<div align="center"><img src="https://github.com/takkii/go_straight/blob/main/img/python_ruby.jpg" alt="PythonとRuby" title="logo"></div>
+<div align="center"><img src="https://github.com/takkii/go_straight/blob/main/img/python_ruby.gif" alt="PythonとRuby" title="logo"></div>
 
 <br />
 <div align="center">
