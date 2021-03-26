@@ -8,11 +8,11 @@ LICENSE)[![GitHub release](https://img.shields.io/github/release/takkii/go_strai
 
 <br />
 <div align="center">
-<p> License </p>
+  <p> use <a href="https://github.com/Shougo/deoplete.nvim">deoplete.nvim</a></p>
 </div>
 <br />
 <div align="center">
-  <b> go_straight is MIT License </b>
+  <b> go_straight is MIT License. </b>
 </div>
 <br />
 <div align="center">
