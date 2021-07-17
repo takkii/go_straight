@@ -1,1 +1,6 @@
 /venv
+/rplugin/python3/deoplete/sources/__pycache__/go_straight.cpython-39.pyc
+/.idea/.gitignore
+/.idea/go_straight.iml
+/.idea/modules.xml
+/.idea/vcs.xml
