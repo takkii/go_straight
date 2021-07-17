@@ -1,5 +1,5 @@
-import multiprocessing
 import gc
+import multiprocessing
 import os
 import re
 import traceback
