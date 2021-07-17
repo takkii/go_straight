@@ -15,7 +15,10 @@ class Source(Base):
         super().__init__(vim)
         self.name = 'go_straight'
         self.filetypes = ['ruby']
-        self.mark = '[Go_Straight!]'
+        # バージョン情報→更新で変更
+        version = '1.0.9]'
+        # まっすぐ🗾を表示→更新で変更
+        self.mark = '[🗾_' + version
         ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_no_match = [r'[;/[^¥/]\*/]']
         self.input_pattern = '|'.join(ruby_match + slash_no_match)
