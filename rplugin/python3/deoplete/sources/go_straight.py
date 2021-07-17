@@ -33,7 +33,7 @@ class Source(Base):
             d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
 
             # 作業用ブランチ追加
-            d6 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight_develop/dict/")
+            d6 = os.path.expanduser("~/go_straight/dict/")
 
             if os.path.isdir(d1):
                 ruby_method = open(os.path.expanduser(
@@ -54,7 +54,7 @@ class Source(Base):
             # 作業用ブランチ追加
             elif os.path.isdir(d6):
                 ruby_method = open(os.path.expanduser(
-                    "~/.cache/dein/repos/github.com/takkii/go_straight_develop/dict/ruby_dict"))
+                    "~/go_straight/dict/ruby_dict"))
 
             else:
                 print("Please, Check the path of go_straight.")
