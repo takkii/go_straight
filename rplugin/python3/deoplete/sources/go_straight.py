@@ -1,4 +1,5 @@
 import multiprocessing
+import gc
 import os
 import re
 import traceback
@@ -51,7 +52,7 @@ class Source(Base):
                 ruby_method = open(os.path.expanduser(
                     "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
 
-            # 作業用ブランチ追加
+            # 作業用ディレクトリ追加
             elif os.path.isdir(d6):
                 ruby_method = open(os.path.expanduser(
                     "~/go_straight/dict/ruby_dict"))
@@ -61,8 +62,8 @@ class Source(Base):
 
             # pandas and dask
             index_ruby = list(ruby_method.readlines())
-            Seri = pd.Series(index_ruby)
-            sort_ruby = Seri.sort_index()
+            pd_ruby = pd.Series(index_ruby)
+            sort_ruby = pd_ruby.sort_index()
             ddf = dd.from_pandas(data=sort_ruby, npartitions=multiprocessing.cpu_count())
             data_array = ddf.to_dask_array(lengths=True)
             data = data_array.compute()
@@ -76,3 +77,13 @@ class Source(Base):
 
         except Exception:
             traceback.print_exc()
+        except OSError as e:
+            print(e)
+        except ZeroDivisionError as zero_e:
+            print(zero_e)
+        except TypeError as type_e:
+            print(type_e)
+        except FileNotFoundError as file_not:
+            print(file_not)
+        finally:
+            gc.enable()
