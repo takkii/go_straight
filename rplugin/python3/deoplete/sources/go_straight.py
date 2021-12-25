@@ -2,6 +2,7 @@ import gc
 import multiprocessing
 import os
 import re
+import random
 import traceback
 from operator import itemgetter
 
@@ -15,7 +16,8 @@ class Source(Base):
         super().__init__(vim)
         self.name = 'go_straight'
         self.filetypes = ['ruby']
-        self.mark = '[💎]'
+        mark_synbol = ['[Ghost]', '[go_straight]', '[GST]', '[まっすぐ]','[ゴースト]', '[Go Straight]', '[直進]',  'GOST']
+        self.mark = str(random.choice(mark_synbol))
         ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_no_match = [r'[;/[^¥/]\*/]']
         self.input_pattern = '|'.join(ruby_match + slash_no_match)
