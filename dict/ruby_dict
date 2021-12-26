@@ -4798,7 +4798,6 @@ type
 name
 content
 http-equiv
-<xml
 align
 cellspacing
 cellpadding
@@ -4812,6 +4811,7 @@ onblur
 onsubmit
 onkeydown
 onkeyup
+require 'tanraku'
 tanraku
 tanraku_log
 tanraku_exit
@@ -6060,3 +6060,29 @@ yaml/dbm.rb
 yaml/store.rb
 yaml.rb
 x86_64-darwin20/rbconfig.rb
+require 'himekurits'
+HimekuriTsBasic.before
+HimekuriTsBasic.after
+HimekuriTsClass.version
+HimekuriTsBasicWeb.new.now_before
+HimekuriTsBasicWeb.new.now_after
+HimekuriTsBasicWeb.new.day_before
+HimekuriTsBasicWeb.new.day_after
+HimekuriTsBasicWeb.new.himekuri_before
+HimekuriTsBasicWeb.new.himekuri_after
+require 'himekuri2'
+require 'himekuri2/version'
+puts Himekuri2::VERSION
+require 'himekuri.o'
+Himekuri.new.cal
+require 'himekuri'
+HimekuriClass.new.himekuri_print
+HimekuriClass.new.count_print
+HimekuriClass.new.reiwa_print
+HimekuriClass.new.version
+HimekuriClass.new.himekuri
+HimekuriClass.new.count
+HimekuriClass.new.reiwa
+@himekuri = HimekuriClass.new.himekuri
+@count = HimekuriClass.new.count
+@reiwa = HimekuriClass.new.reiwa
