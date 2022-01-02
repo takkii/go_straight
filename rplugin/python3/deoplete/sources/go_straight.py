@@ -3,6 +3,7 @@ import multiprocessing
 import os
 import re
 import random
+import yaml
 import traceback
 from operator import itemgetter
 
@@ -36,9 +37,13 @@ class Source(Base):
             d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
 
             # 作業用ブランチ追加
-            d6 = os.path.expanduser("~/go_straight/dict/")
+            with open(os.path.expanduser("~/go_straight/config/load.yml")) as yml:
+                 config = yaml.load(yml, Loader=yaml.SafeLoader)            
+            a1 = os.path.expanduser(config['Folder_Load_Path'])
 
-            if os.path.isdir(d1):
+            if os.path.isdir(a1):
+                ruby_method = open(os.path.expanduser(config['File_Load_Path']))
+            elif os.path.isdir(d1):
                 ruby_method = open(os.path.expanduser(
                     "~/.vim/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
             elif os.path.isdir(d2):
@@ -53,11 +58,6 @@ class Source(Base):
             elif os.path.isdir(d5):
                 ruby_method = open(os.path.expanduser(
                     "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
-
-            # 作業用ディレクトリ追加
-            elif os.path.isdir(d6):
-                ruby_method = open(os.path.expanduser(
-                    "~/go_straight/dict/ruby_dict"))
 
             else:
                 print("Please, Check the path of go_straight.")

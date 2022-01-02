@@ -1,0 +1,7 @@
+# configuration
+
+Folder_Load_Path: "~/go_straight/dict/"
+File_Load_Path: "~/go_straight/dict/ruby_dict"
+
+# Folder_Load_Path: "Custom Path Setting"
+# File_Load_Path: "Custom Path Setting"
