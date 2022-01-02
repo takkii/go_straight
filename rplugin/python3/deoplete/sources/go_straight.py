@@ -36,11 +36,12 @@ class Source(Base):
             d4 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
             d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
 
-            # 作業用ブランチ追加
-            with open(os.path.expanduser("~/go_straight/config/load.yml")) as yml:
+            # 手動で辞書を設定
+            with open(os.path.expanduser("~/config/load.yml")) as yml:
                  config = yaml.load(yml, Loader=yaml.SafeLoader)            
             a1 = os.path.expanduser(config['Folder_Load_Path'])
 
+            # 自動で辞書を探します
             if os.path.isdir(a1):
                 ruby_method = open(os.path.expanduser(config['File_Load_Path']))
             elif os.path.isdir(d1):
