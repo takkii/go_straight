@@ -11,7 +11,7 @@ import dask.dataframe as dd
 import pandas as pd
 from deoplete.source.base import Base
 
-
+# GitHub: go_straight version is v1.3.3
 class Source(Base):
     def __init__(self, vim):
         super().__init__(vim)
