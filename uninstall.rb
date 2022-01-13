@@ -13,7 +13,7 @@ class UnInstallerRunner
 
   def self.run
     encoding_style
-    stdout_rb, _stderr_rb, _status_rb = Open3.capture3("rm ~/config")
+    stdout_rb, _stderr_rb, _status_rb = Open3.capture3("rm ./config")
     stdout_rb
   end
 end
