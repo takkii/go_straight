@@ -11,7 +11,7 @@ import dask.dataframe as dd
 import pandas as pd
 from deoplete.source.base import Base
 
-# GitHub: go_straight version is v1.3.3
+# GitHub: config version is v1.3.3
 class Source(Base):
     def __init__(self, vim):
         super().__init__(vim)
@@ -30,11 +30,11 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
-            d1 = os.path.expanduser("~/.vim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
-            d2 = os.path.expanduser("~/.vim/repos/github.com/takkii/go_straight/dict/")
-            d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/go_straight/dict/")
-            d4 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/")
-            d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/go_straight/dict/")
+            d1 = os.path.expanduser("~/.vim/.cache/dein/repos/github.com/takkii/config/dict/")
+            d2 = os.path.expanduser("~/.vim/repos/github.com/takkii/config/dict/")
+            d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/config/dict/")
+            d4 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/config/dict/")
+            d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/config/dict/")
 
             # Manually set the dictionary
             with open(os.path.expanduser("~/config/load.yml")) as yml:
@@ -46,19 +46,19 @@ class Source(Base):
                 ruby_method = open(os.path.expanduser(config['File_Load_Path']))
             elif os.path.isdir(d1):
                 ruby_method = open(os.path.expanduser(
-                    "~/.vim/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
+                    "~/.vim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict"))
             elif os.path.isdir(d2):
                 ruby_method = open(os.path.expanduser(
-                    "~/.vim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
+                    "~/.vim/repos/github.com/takkii/config/dict/ruby_dict"))
             elif os.path.isdir(d3):
                 ruby_method = open(os.path.expanduser(
-                    "~/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
+                    "~/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict"))
             elif os.path.isdir(d4):
                 ruby_method = open(os.path.expanduser(
-                    "~/.config/nvim/.cache/dein/repos/github.com/takkii/go_straight/dict/ruby_dict"))
+                    "~/.config/nvim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict"))
             elif os.path.isdir(d5):
                 ruby_method = open(os.path.expanduser(
-                    "~/.config/nvim/repos/github.com/takkii/go_straight/dict/ruby_dict"))
+                    "~/.config/nvim/repos/github.com/takkii/config/dict/ruby_dict"))
 
             else:
                 print("Please, Check the path of go_straight.")
