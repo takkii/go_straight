@@ -1,3 +1,4 @@
+import csv
 import gc
 import multiprocessing
 import os
@@ -38,7 +39,7 @@ class Source(Base):
 
             # Manually set the dictionary
             with open(os.path.expanduser("~/config/load.yml")) as yml:
-                 config = yaml.safe_load(yml)           
+                 config = yaml.safe_load(yml)
             a1 = os.path.expanduser(config['Folder_Load_Path'])
 
             # Automatically search the dictionary
