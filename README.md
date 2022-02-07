@@ -6,7 +6,11 @@ LICENSE)[![GitHub release](https://img.shields.io/github/release/takkii/go_strai
 <div align="center"><img src="https://github.com/takkii/photo/blob/main/images/python_ruby.gif" alt="PythonとRuby" title="logo"></div>
 <br />
 <div align="center">
-    <p> use <a href="https://github.com/Shougo/deoplete.nvim">deoplete.nvim</a></p>
+    <p>photo by <a href="https://github.com/takkii/photo">写真庫</a></p>
+</div>
+<br />
+<div align="center">
+    <p> go_straight use <a href="https://github.com/Shougo/deoplete.nvim">deoplete.nvim</a></p>
 </div>
 <br />
 <div align="center">
