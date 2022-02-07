@@ -14,7 +14,7 @@ class PyLibInstallerRunner
   def self.run
     encoding_style
     stdout_rb, _stderr_rb, _status_rb = Open3.capture3("pip3 install -r requirements.txt")
-    stdout_rb
+    puts stdout_rb
   end
 end
 
