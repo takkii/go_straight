@@ -2,7 +2,8 @@
 License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](
 LICENSE)[![GitHub release](https://img.shields.io/github/release/takkii/go_straight.svg?style=flat)](GitHub)[![GitHub Status](https://img.shields.io/github/last-commit/takkii/go_straight.svg?style=flat)](GitHub)
 <br />
-<div align="center"><img src="https://github.com/takkii/go_straight/blob/main/img/python_ruby.gif" alt="PythonとRuby" title="logo"></div>
+
+<div align="center"><img src="https://github.com/takkii/photo/blob/main/images/python_ruby.gif" alt="PythonとRuby" title="logo"></div>
 <br />
 <div align="center">
     <p> use <a href="https://github.com/Shougo/deoplete.nvim">deoplete.nvim</a></p>
