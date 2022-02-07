@@ -18,7 +18,7 @@ class Source(Base):
         super().__init__(vim)
         self.name = 'go_straight'
         self.filetypes = ['ruby']
-        mark_synbol = ['[Ghost]', '[go_straight]', '[GST]', '[まっすぐ]','[ゴースト]', '[Go Straight]', '[直進]',  'GOST']
+        mark_synbol = ['[Ghost]', '[go_straight]', '[GST]', '[まっすぐ]','[ゴースト]', '[Go Straight]', '[直進]',  'GOST', 'go_straight', 'GST', 'Ghost', 'Go Straight', 'Go_Straight']
         self.mark = str(random.choice(mark_synbol))
         ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_no_match = [r'[;/[^¥/]\*/]']
@@ -31,36 +31,50 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
+            # use dein plugin manager.
             d1 = os.path.expanduser("~/.vim/.cache/dein/repos/github.com/takkii/config/dict/")
             d2 = os.path.expanduser("~/.vim/repos/github.com/takkii/config/dict/")
             d3 = os.path.expanduser("~/.cache/dein/repos/github.com/takkii/config/dict/")
             d4 = os.path.expanduser("~/.config/nvim/.cache/dein/repos/github.com/takkii/config/dict/")
             d5 = os.path.expanduser("~/.config/nvim/repos/github.com/takkii/config/dict/")
 
-            # Manually set the dictionary
+            # use vim-plug plugin manager.
+            v1 = os.path.expanduser("~/.vim/plugged/takkii/config/dict/")
+            v2 = os.path.expanduser("~/.neovim/plugged/takkii/config/dict/")
+
+            # Manually set the dictionary.
             with open(os.path.expanduser("~/config/load.yml")) as yml:
                  config = yaml.safe_load(yml)
             a1 = os.path.expanduser(config['Folder_Load_Path'])
 
-            # Automatically search the dictionary
+            # dein plugin manager path.
             if os.path.isdir(a1):
                 ruby_method = open(os.path.expanduser(config['File_Load_Path']))
             elif os.path.isdir(d1):
                 ruby_method = open(os.path.expanduser(
-                    "~/.vim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict"))
+                    "~/.vim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict.csv"))
             elif os.path.isdir(d2):
                 ruby_method = open(os.path.expanduser(
-                    "~/.vim/repos/github.com/takkii/config/dict/ruby_dict"))
+                    "~/.vim/repos/github.com/takkii/config/dict/ruby_dict.csv"))
             elif os.path.isdir(d3):
                 ruby_method = open(os.path.expanduser(
-                    "~/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict"))
+                    "~/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict.csv"))
             elif os.path.isdir(d4):
                 ruby_method = open(os.path.expanduser(
-                    "~/.config/nvim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict"))
+                    "~/.config/nvim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict.csv"))
             elif os.path.isdir(d5):
                 ruby_method = open(os.path.expanduser(
-                    "~/.config/nvim/repos/github.com/takkii/config/dict/ruby_dict"))
+                    "~/.config/nvim/repos/github.com/takkii/config/dict/ruby_dict.csv"))
 
+            # vim-plug plugin manager path.
+            elif os.path.isdir(v1):
+                ruby_method = open(os.path.expanduser(
+                    "~/.vim/plugged/takkii/config/dict/ruby_dict.csv"))
+            elif os.path.isdir(v2):
+                ruby_method = open(os.path.expanduser(
+                    "~/.neovim/plugged/takkii/config/dict/ruby_dict.csv"))
+
+            # Automatically search the dictionary not found.
             else:
                 print("Please, Check the path of go_straight.")
 
