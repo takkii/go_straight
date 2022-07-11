@@ -2,6 +2,7 @@
 #!/usr/bin/ruby
 
 require 'open3'
+require 'fileutils'
 
 # Installer runner.
 class InstallerRunner
@@ -17,8 +18,9 @@ class InstallerRunner
       stdout_rb, _stderr_rb, _status_rb = Open3.capture3("ruby ./uninstaller.rb")
       stdout_rb
     else
-      stdout_rb, _stderr_rb, _status_rb = Open3.capture3("git clone git@github.com:takkii/config.git && mv config ~/")
-      stdout_rb
+      stdout_rb, _stderr_rb, _status_rb = Open3.capture3("git clone git@github.com:takkii/config.git")
+      puts stdout_rb
+      FileUtils.mv("#{File.dirname(__FILE__)}/config", File.expand_path('~/'))
     end
   end
 end
