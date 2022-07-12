@@ -15,7 +15,7 @@ class InstallerRunner
   def self.run
     encoding_style
     if Dir.exist?(File.expand_path('~/config'))
-      stdout_rb, _stderr_rb, _status_rb = Open3.capture3("ruby ./uninstaller.rb")
+      stdout_rb, _stderr_rb, _status_rb = Open3.capture3("ruby ./uninstall.rb")
       stdout_rb
     else
       stdout_rb, _stderr_rb, _status_rb = Open3.capture3("git clone git@github.com:takkii/config.git")
