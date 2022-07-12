@@ -21,8 +21,8 @@ class InstallerRunner
       stdout_gt
       FileUtils.mv("#{File.dirname(__FILE__)}/config", File.expand_path('~/'))
     else
-      stdout_rb, _stderr_rb, _status_rb = Open3.capture3("git clone git@github.com:takkii/config.git")
-      puts stdout_rb
+      stdout_gt, _stderr_gt, _status_gt = Open3.capture3("git clone git@github.com:takkii/config.git")
+      stdout_gt
       FileUtils.mv("#{File.dirname(__FILE__)}/config", File.expand_path('~/'))
     end
   end
