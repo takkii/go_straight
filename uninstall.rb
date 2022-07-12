@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 #!/usr/bin/ruby
 
-require 'open3'
+require 'fileutils'
 
 # Installer runner.
 class UnInstallerRunner
@@ -13,8 +13,7 @@ class UnInstallerRunner
 
   def self.run
     encoding_style
-    stdout_rb, _stderr_rb, _status_rb = Open3.capture3("rm ./config")
-    stdout_rb
+    FileUtils.rm_rf(File.expand_path('~/config'))
   end
 end
 
