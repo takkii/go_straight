@@ -20,10 +20,14 @@ class InstallerRunner
       stdout_gt, _stderr_gt, _status_gt = Open3.capture3("git clone git@github.com:takkii/config.git")
       stdout_gt
       FileUtils.mv("#{File.dirname(__FILE__)}/config", File.expand_path('~/'))
+      stdout_rq, _stderr_rq, _status_rq = Open3.capture3("pip3 install -r requirements.txt")
+      stdout_rq
     else
       stdout_gt, _stderr_gt, _status_gt = Open3.capture3("git clone git@github.com:takkii/config.git")
       stdout_gt
       FileUtils.mv("#{File.dirname(__FILE__)}/config", File.expand_path('~/'))
+      stdout_rq, _stderr_rq, _status_rq = Open3.capture3("pip3 install -r requirements.txt")
+      stdout_rq
     end
   end
 end
