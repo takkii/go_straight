@@ -57,12 +57,12 @@ class Source(Base):
             # Manually set the dictionary.
             with open(os.path.expanduser("~/config/load.yml")) as yml:
                 config = yaml.safe_load(yml)
-            a1 = os.path.expanduser(config['Folder_Load_Path'])
+            a1 = os.path.expanduser(config['Folder_Load'])
 
             # dein plugin manager path.
             if os.path.isdir(a1):
                 ruby_method = open(os.path.expanduser(
-                    config['File_Load_Path']))
+                    config['File_Load']))
             elif os.path.isdir(d1):
                 ruby_method = open(
                     os.path.expanduser(
