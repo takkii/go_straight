@@ -1,4 +1,3 @@
-import csv
 import gc
 import multiprocessing
 import os
@@ -13,7 +12,7 @@ import pandas as pd
 from deoplete.source.base import Base
 
 
-# GitHub: config version is v1.3.3
+# GitHub: use config repo.
 class Source(Base):
 
     def __init__(self, vim):
@@ -57,12 +56,12 @@ class Source(Base):
             # Manually set the dictionary.
             with open(os.path.expanduser("~/config/load.yml")) as yml:
                 config = yaml.safe_load(yml)
-            a1 = os.path.expanduser(config['Folder_Load'])
+            a1 = os.path.expanduser(config['Home_Folder'])
 
             # dein plugin manager path.
             if os.path.isdir(a1):
                 ruby_method = open(os.path.expanduser(
-                    config['File_Load']))
+                    config['Home_File']))
             elif os.path.isdir(d1):
                 ruby_method = open(
                     os.path.expanduser(
