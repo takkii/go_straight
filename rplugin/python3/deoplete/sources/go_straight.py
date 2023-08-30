@@ -1,15 +1,20 @@
+import dask.dataframe as dd
 import gc
 import multiprocessing
 import os
-import re
+import pandas as pd
 import random
+import re
+import sys
 import yaml
 import traceback
-from operator import itemgetter
+import warnings
 
-import dask.dataframe as dd
-import pandas as pd
 from deoplete.source.base import Base
+from operator import itemgetter
+from typing import Optional
+
+warnings.filterwarnings('ignore')
 
 
 # GitHub: use config repo.
@@ -36,97 +41,87 @@ class Source(Base):
 
     def gather_candidates(self, context):
         try:
-            # use dein plugin manager.
-            d1 = os.path.expanduser(
-                "~/.vim/.cache/dein/repos/github.com/takkii/config/dict/")
-            d2 = os.path.expanduser(
-                "~/.vim/repos/github.com/takkii/config/dict/")
-            d3 = os.path.expanduser(
-                "~/.cache/dein/repos/github.com/takkii/config/dict/")
-            d4 = os.path.expanduser(
-                "~/.config/nvim/.cache/dein/repos/github.com/takkii/config/dict/"
-            )
-            d5 = os.path.expanduser(
-                "~/.config/nvim/repos/github.com/takkii/config/dict/")
+            # It doesn't support python4 yet.
+            py_major = sys.version_info[0]
+            py_minor = sys.version_info[1]
 
-            # use vim-plug plugin manager.
-            v1 = os.path.expanduser("~/.vim/plugged/takkii/config/dict/")
-            v2 = os.path.expanduser("~/.neovim/plugged/takkii/config/dict/")
+            # 3.5 or higher python version is required.
+            if py_major == 3 and py_minor > 4:
+                # Settings, Config path is true/false change.
+                config_load: Optional[str] = '~/config/load.yml'
+                plug_config: Optional[
+                    str] = '~/.neovim/plugged/config/load.yml'
 
-            # Manually set the dictionary.
-            with open(os.path.expanduser("~/config/load.yml")) as yml:
-                config = yaml.safe_load(yml)
-            a1 = os.path.expanduser(config['Home_Folder'])
+                # Settings, Loading File PATH.
+                file_load: Optional[str] = 'Home_File'
+                plug_load: Optional[str] = 'File_Load'
 
-            # dein plugin manager path.
-            if os.path.isdir(a1):
-                ruby_method = open(os.path.expanduser(
-                    config['Home_File']))
-            elif os.path.isdir(d1):
-                ruby_method = open(
-                    os.path.expanduser(
-                        "~/.vim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict.csv"
-                    ))
-            elif os.path.isdir(d2):
-                ruby_method = open(
-                    os.path.expanduser(
-                        "~/.vim/repos/github.com/takkii/config/dict/ruby_dict.csv"
-                    ))
-            elif os.path.isdir(d3):
-                ruby_method = open(
-                    os.path.expanduser(
-                        "~/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict.csv"
-                    ))
-            elif os.path.isdir(d4):
-                ruby_method = open(
-                    os.path.expanduser(
-                        "~/.config/nvim/.cache/dein/repos/github.com/takkii/config/dict/ruby_dict.csv"
-                    ))
-            elif os.path.isdir(d5):
-                ruby_method = open(
-                    os.path.expanduser(
-                        "~/.config/nvim/repos/github.com/takkii/config/dict/ruby_dict.csv"
-                    ))
+                # Home Folder, Set the dictionary.
+                if os.path.exists(os.path.expanduser(config_load)):
+                    with open(os.path.expanduser(config_load)) as yml:
+                        config = yaml.safe_load(yml)
 
-            # vim-plug plugin manager path.
-            elif os.path.isdir(v1):
-                ruby_method = open(
-                    os.path.expanduser(
-                        "~/.vim/plugged/takkii/config/dict/ruby_dict.csv"))
-            elif os.path.isdir(v2):
-                ruby_method = open(
-                    os.path.expanduser(
-                        "~/.neovim/plugged/takkii/config/dict/ruby_dict.csv"))
+                    # Get Receiver/Ruby Method Complete.
+                    with open(os.path.expanduser(config[file_load])) as r_meth:
+                        data = list(r_meth.readlines())
+                        data_ruby: Optional[list] = [s.rstrip() for s in data]
+                        complete: Optional[list] = data_ruby
+                        complete.sort(key=itemgetter(0))
+                        return complete
 
-            # Automatically search the dictionary not found.
+                # Use vim-plug, Set the dictionary.
+                elif os.path.exists(os.path.expanduser(plug_config)):
+                    with open(os.path.expanduser(plug_config)) as yml:
+                        config = yaml.safe_load(yml)
+
+                    # Get Receiver/Ruby Method Complete.
+                    with open(os.path.expanduser(config[plug_load])) as r_meth:
+                        # pandas and dask
+                        index_ruby = list(r_meth.readlines())
+                        pd_ruby = pd.Series(index_ruby)
+                        st_r = pd_ruby.sort_index()
+                        ddf = dd.from_pandas(
+                            data=st_r, npartitions=multiprocessing.cpu_count())
+                        data_array = ddf.to_dask_array(lengths=True)
+                        data = data_array.compute()
+                        data_ruby = list(map(lambda s: s.rstrip(), data))
+
+                        # sort and itemgetter
+                        data_ruby.sort(key=itemgetter(0))
+                        return data_ruby
+
+                # Config Folder not found.
+                else:
+                    raise ValueError("None, Please Check the Config Folder")
             else:
-                print("Please, Check the path of go_straight.")
+                raise ValueError("Python Version Check, 3.5 or higher.")
 
-            # pandas and dask
-            index_ruby = list(ruby_method.readlines())
-            pd_ruby = pd.Series(index_ruby)
-            sort_ruby = pd_ruby.sort_index()
-            ddf = dd.from_pandas(data=sort_ruby,
-                                 npartitions=multiprocessing.cpu_count())
-            data_array = ddf.to_dask_array(lengths=True)
-            data = data_array.compute()
-            data_ruby = list(map(lambda s: s.rstrip(), data))
-            ruby_method.close()
-
-            # sort and itemgetter
-            dic = data_ruby
-            dic.sort(key=itemgetter(0))
-            return dic
-
+        # TraceBack.
         except Exception:
-            traceback.print_exc()
-        except OSError as e:
-            print(e)
-        except ZeroDivisionError as zero_e:
-            print(zero_e)
-        except TypeError as type_e:
-            print(type_e)
-        except FileNotFoundError as file_not:
-            print(file_not)
+            # Load/Create LogFile.
+            except_folder: Optional[str] = 'SKL_Folder_load'
+            except_file: Optional[str] = 'SKL_File_load'
+            real: Optional[str] = os.path.expanduser(config[except_folder])
+            debug_word: Optional[str] = os.path.expanduser(config[except_file])
+
+            # Load the dictionary.
+            if os.path.isdir(real):
+                with open(debug_word, 'a') as log_py:
+                    traceback.print_exc(file=log_py)
+
+                    # throw except.
+                    raise RuntimeError from None
+
+            # real Foler not found.
+            else:
+                raise ValueError("None, Please Check the real Folder.")
+
+        # Custom Exception.
+        except ValueError as ext:
+            print(ext)
+            raise RuntimeError from None
+
+        # Once Exec.
         finally:
-            gc.enable()
+            # GC collection.
+            gc.collect()
