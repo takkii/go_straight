@@ -13,7 +13,7 @@ from typing import Optional
 warnings.filterwarnings('ignore')
 
 # Settings, Config path is true/false change.
-plug_config: Optional[str] = '~/GitHub/config/load.yml'
+plug_config: Optional[str] = '~/config/load.yml'
 
 # Settings, Loading File PATH.
 plug_main: Optional[str] = 'Home_File'
