@@ -1,6 +1,7 @@
 msgpack-python
-msgpack == 1.0.0
+msgpack
 numpy
 pynvim
 pandas
 dask[complete]
+scikit-learn
