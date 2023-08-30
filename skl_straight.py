@@ -2,6 +2,7 @@ import dask.dataframe as dd
 import multiprocessing
 import os
 import pandas as pd
+import threading
 import yaml
 import warnings
 
@@ -12,60 +13,121 @@ from typing import Optional
 
 warnings.filterwarnings('ignore')
 
-# Settings, Comment out when using Home_File.
-# plug_config: Optional[str] = '~/config/load.yml'
-# plug_main: Optional[str] = 'Home_File'
 
-# Settings, use vim-plug path.
-plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
-plug_main: Optional[str] = 'File_Load'
+def main():
+    # Settings, use vim-plug path.
+    plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
+    plug_main: Optional[str] = 'File_Load'
 
-# Use vim-plug, Set the dictionary.
-if os.path.exists(os.path.expanduser(plug_config)):
-    with open(os.path.expanduser(plug_config)) as yml:
-        config = yaml.safe_load(yml)
+    # Use vim-plug, Set the dictionary.
+    if os.path.exists(os.path.expanduser(plug_config)):
+        with open(os.path.expanduser(plug_config)) as yml:
+            config = yaml.safe_load(yml)
 
-    # Get Receiver/Ruby Method Complete.
-    with open(os.path.expanduser(config[plug_main])) as r_meth:
-        data_main = list(r_meth.readlines())
+        # Get Receiver/Ruby Method Complete.
+        with open(os.path.expanduser(config[plug_main])) as r_meth:
+            data_main = list(r_meth.readlines())
 
-    pd_ruby = pd.Series(data_main)
-    sort_r = pd_ruby.sort_index()
-    ddf = dd.from_pandas(data=sort_r, npartitions=multiprocessing.cpu_count())
-    data_array = ddf.to_dask_array(lengths=True)
-    data = data_array.compute()
-    data_main = list(map(lambda s: s.rstrip(), data))
+        pd_ruby = pd.Series(data_main)
+        s_r = pd_ruby.sort_index()
+        ddf = dd.from_pandas(data=s_r, npartitions=multiprocessing.cpu_count())
+        data_array = ddf.to_dask_array(lengths=True)
+        data = data_array.compute()
+        data_main = list(map(lambda s: s.rstrip(), data))
 
-    le = LabelEncoder()
-    le.fit(data_main)
-    num_ran = range(0, 3333)
+        le = LabelEncoder()
+        le.fit(data_main)
+        data_num = le.transform(data_main)
+        data_dummies_x = pd.get_dummies(data_num)
+        feature_x = data_dummies_x.loc[:, '0':'3332']  # type: ignore[misc]
 
-    # print(le.classes_)
-    # print(le.transform(data_main))
-    # print(le.inverse_transform(num_ran))
+        x = feature_x.values
+        y = data_dummies_x[3332].values
 
-    # print(le.classes_)
-    data_num = le.transform(data_main)
-    # print(le.inverse_transform(num_ran))
+        x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0)
+        logreg = LogisticRegression()
+        logreg.fit(x_train, y_train)
 
-    # print(data_main)
+        print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
 
-    data_dummies_x = pd.get_dummies(data_num)
-    feature_x = data_dummies_x.loc[:, '0':'3332']  # type: ignore[misc]
 
-    x = feature_x.values
-    y = data_dummies_x[3332].values
+def dev_main():
+    # Settings, Comment out when using Home_File.
+    # plug_config: Optional[str] = '~/config/load.yml'
+    # plug_main: Optional[str] = 'Home_File'
 
-    # print("x.shape {} y.shape {}".format(x.shape, y.shape))
-    # print(data_dummies_x.head())
+    # Settings, use vim-plug path.
+    plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
+    plug_main: Optional[str] = 'File_Load'
 
-    # print("\n")
+    # Use vim-plug, Set the dictionary.
+    if os.path.exists(os.path.expanduser(plug_config)):
+        with open(os.path.expanduser(plug_config)) as yml:
+            config = yaml.safe_load(yml)
 
-    x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0)
-    logreg = LogisticRegression()
-    logreg.fit(x_train, y_train)
+        # Get Receiver/Ruby Method Complete.
+        with open(os.path.expanduser(config[plug_main])) as r_meth:
+            data_main = list(r_meth.readlines())
 
-    # x_pred = logreg.fit(x_train, y_train).predict(x_test)
-    # print(x_pred)
+        pd_ruby = pd.Series(data_main)
+        sort_r = pd_ruby.sort_index()
+        ddf = dd.from_pandas(data=sort_r, npartitions=multiprocessing.cpu_count())
+        data_array = ddf.to_dask_array(lengths=True)
+        data = data_array.compute()
+        data_main = list(map(lambda s: s.rstrip(), data))
 
-    print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
+        le = LabelEncoder()
+        le.fit(data_main)
+        # num_ran = range(0, 3333)
+
+        # print(le.classes_)
+        # print(le.transform(data_main))
+        # print(le.inverse_transform(num_ran))
+
+        # print(le.classes_)
+        data_num = le.transform(data_main)
+        # print(le.inverse_transform(num_ran))
+
+        # print(data_main)
+
+        data_dummies_x = pd.get_dummies(data_num)
+        feature_x = data_dummies_x.loc[:, '0':'3332']  # type: ignore[misc]
+
+        x = feature_x.values
+        y = data_dummies_x[3332].values
+
+        # print("x.shape {} y.shape {}".format(x.shape, y.shape))
+        # print(data_dummies_x.head())
+
+        # print("\n")
+
+        x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0)
+        logreg = LogisticRegression()
+        logreg.fit(x_train, y_train)
+
+        # x_pred = logreg.fit(x_train, y_train).predict(x_test)
+        # print(x_pred)
+
+        print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
+
+
+# Thread call, list.
+class skl_straight(threading.Thread):
+
+    def __init__(self):
+        threading.Thread.__init__(self)
+
+    def start(self):
+        main()
+
+    def develop(self):
+        dev_main()
+
+
+Thread = skl_straight()
+
+# main thread
+start = Thread.start()
+
+# develop thread
+# dev_start = Thread.develop()
