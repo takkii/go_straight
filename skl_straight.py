@@ -12,11 +12,13 @@ from typing import Optional
 
 warnings.filterwarnings('ignore')
 
-# Settings, Config path is true/false change.
-plug_config: Optional[str] = '~/config/load.yml'
+# Settings, Comment out when using Home_File.
+# plug_config: Optional[str] = '~/config/load.yml'
+# plug_main: Optional[str] = 'Home_File'
 
-# Settings, Loading File PATH.
-plug_main: Optional[str] = 'Home_File'
+# Settings, use vim-plug path.
+plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
+plug_main: Optional[str] = 'File_Load'
 
 # Use vim-plug, Set the dictionary.
 if os.path.exists(os.path.expanduser(plug_config)):
