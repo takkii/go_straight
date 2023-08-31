@@ -1,4 +1,5 @@
 import dask.dataframe as dd
+import gc
 import multiprocessing
 import os
 import pandas as pd
@@ -49,6 +50,10 @@ def main():
         logreg.fit(x_train, y_train)
 
         print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
+
+    # Config Folder not found.
+    else:
+        raise ValueError("None, Please Check the Config Folder")
 
 
 def dev_main():
@@ -110,6 +115,10 @@ def dev_main():
 
         print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
 
+    # Config Folder not found.
+    else:
+        raise ValueError("None, Please Check the Config Folder")
+
 
 # Thread call, list.
 class skl_straight(threading.Thread):
@@ -120,8 +129,14 @@ class skl_straight(threading.Thread):
     def start(self):
         main()
 
+        # GC collection.
+        gc.collect()
+
     def develop(self):
         dev_main()
+
+        # GC collection.
+        gc.collect()
 
 
 Thread = skl_straight()
