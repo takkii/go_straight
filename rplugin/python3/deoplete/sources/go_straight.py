@@ -25,9 +25,7 @@ class Source(Base):
         self.name = 'go_straight'
         self.filetypes = ['ruby']
         mark_synbol = [
-            '[Ghost]', '[go_straight]', '[GST]', '[まっすぐ]', '[ゴースト]',
-            '[Go Straight]', '[直進]', 'GOST', 'go_straight', 'GST', 'Ghost',
-            'Go Straight', 'Go_Straight'
+            '[GST]',  '[Go Straight]', 'go straight', 'GST',
         ]
         self.mark = str(random.choice(mark_synbol))
         ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
@@ -101,20 +99,20 @@ class Source(Base):
             # Load/Create LogFile.
             except_folder: Optional[str] = 'SKL_Folder_load'
             except_file: Optional[str] = 'SKL_File_load'
-            real: Optional[str] = os.path.expanduser(config[except_folder])
+            skl_str: Optional[str] = os.path.expanduser(config[except_folder])
             debug_word: Optional[str] = os.path.expanduser(config[except_file])
 
             # Load the dictionary.
-            if os.path.isdir(real):
+            if os.path.isdir(skl_str):
                 with open(debug_word, 'a') as log_py:
                     traceback.print_exc(file=log_py)
 
                     # throw except.
                     raise RuntimeError from None
 
-            # real Foler not found.
+            # skl_straight Foler not found.
             else:
-                raise ValueError("None, Please Check the real Folder.")
+                raise ValueError("None, Please Check the go_straight Folder.")
 
         # Custom Exception.
         except ValueError as ext:
