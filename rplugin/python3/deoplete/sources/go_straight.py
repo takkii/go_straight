@@ -61,7 +61,7 @@ class Source(Base):
 
                     # Get Receiver/Ruby Method Complete.
                     with open(os.path.expanduser(config[file_load])) as r_meth:
-                        data = list(r_meth.readlines())
+                        data: Optional[list] = list(r_meth.readlines())
                         data_ruby: Optional[list] = [s.rstrip() for s in data]
                         complete: Optional[list] = data_ruby
                         complete.sort(key=itemgetter(0))
@@ -75,18 +75,18 @@ class Source(Base):
                     # Get Receiver/Ruby Method Complete.
                     with open(os.path.expanduser(config[plug_load])) as r_meth:
                         # pandas and dask
-                        index_ruby = list(r_meth.readlines())
+                        index_ruby: Optional[list] = list(r_meth.readlines())
                         pd_ruby = pd.Series(index_ruby)
                         st_r = pd_ruby.sort_index()
                         ddf = dd.from_pandas(
                             data=st_r, npartitions=multiprocessing.cpu_count())
                         data_array = ddf.to_dask_array(lengths=True)
                         data = data_array.compute()
-                        data_ruby = list(map(lambda s: s.rstrip(), data))
+                        data_py: Optional[list] = [s.rstrip() for s in data]
 
                         # sort and itemgetter
-                        data_ruby.sort(key=itemgetter(0))
-                        return data_ruby
+                        data_py.sort(key=itemgetter(0))
+                        return data_py
 
                 # Config Folder not found.
                 else:
