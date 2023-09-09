@@ -59,7 +59,7 @@ class Source(Base):
                     with open(os.path.expanduser(config_load)) as yml:
                         config = yaml.safe_load(yml)
 
-                    # Get Receiver/Ruby Method Complete.
+                    # Get Receiver/Real behavior.
                     with open(os.path.expanduser(config[file_load])) as r_meth:
                         data: Optional[list] = list(r_meth.readlines())
                         data_ruby: Optional[list] = [s.rstrip() for s in data]
@@ -72,7 +72,7 @@ class Source(Base):
                     with open(os.path.expanduser(plug_config)) as yml:
                         config = yaml.safe_load(yml)
 
-                    # Get Receiver/Ruby Method Complete.
+                    # Get Receiver/go_straight behavior.
                     with open(os.path.expanduser(config[plug_load])) as r_meth:
                         # pandas and dask
                         index_ruby: Optional[list] = list(r_meth.readlines())
@@ -91,6 +91,7 @@ class Source(Base):
                 # Config Folder not found.
                 else:
                     raise ValueError("None, Please Check the Config Folder")
+            # Python Version 3.5 ~, (<= 4.0)
             else:
                 raise ValueError("Python Version Check, 3.5 or higher.")
 
@@ -110,7 +111,7 @@ class Source(Base):
                     # throw except.
                     raise RuntimeError from None
 
-            # skl_straight Foler not found.
+            # skl_str Folder not found.
             else:
                 raise ValueError("None, Please Check the go_straight Folder.")
 
