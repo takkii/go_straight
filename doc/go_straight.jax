@@ -20,6 +20,6 @@ realの挙動                            $HOME/configを読み込み時
 ログフォルダ作成                      ruby log_folder.rb
 環境構築自動                          ruby install.rb
 機械学習ファイル                      ruby skl_straight.rb
-アンインストール                      ruby uninstall.rb
+アンインストール($HOME/config)        ruby uninstall.rb
 
 ==============================================================================
