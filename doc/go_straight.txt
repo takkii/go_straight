@@ -11,15 +11,17 @@ Environment construction                Python3, vim-plug, deoplete.nvim
 Introduction (vim-plug)                 Plug 'takkii/go_straight'
 Settings (deoplete.nvim)                :UpdateRemotePlugins
 Dependency removal                      pip3 install -r requirements.txt
+Python3 (3.5~, <=4.0)                   Python3.5 or higher
+                                        but less than 4.0 is recommended
 
 ==============================================================================
 *./go_straight*
 
 Load dictionary                         Plug 'takkii/config' or $HOME/config
-Behavior of real When reading           $HOME/config
+Same behavior as real                   $HOME/config
 Create log folder                       ruby log_folder.rb
 Automatic environment construction      ruby install.rb
-Machine learning file                   ruby skl_straight.rb
+Machine learning (prototype)            ruby skl_straight.rb
 Uninstall($HOME/config)                 ruby uninstall.rb
 
 ==============================================================================
