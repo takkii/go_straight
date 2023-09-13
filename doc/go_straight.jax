@@ -5,21 +5,21 @@ Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
 ==============================================================================
-*ŠÂ‹«\’z*
+*ç’°å¢ƒæ§‹ç¯‰*
 
-ŠÂ‹«\’z                              Python3, vim-plug, deoplete.nvim
-“±“ü(vim-plug)                        Plug 'takkii/go_straight'
-İ’è(deoplete.nvim)                   :UpdateRemotePlugin
-ˆË‘¶‰ğÁ                              pip3 install -r requirements.txt
+ç’°å¢ƒæ§‹ç¯‰                              Python3, vim-plug, deoplete.nvim
+å°å…¥(vim-plug)                        Plug 'takkii/go_straight'
+è¨­å®š(deoplete.nvim)                   :UpdateRemotePlugin
+ä¾å­˜è§£æ¶ˆ                              pip3 install -r requirements.txt
 
 ==============================================================================
 *./go_straight*
 
-«‘“Ç‚İ‚İ                          Plug 'takkii/config' or $HOME/config
-real‚Ì‹““®                            $HOME/config‚ğ“Ç‚İ‚İ
-ƒƒOƒtƒHƒ‹ƒ_ì¬                      ruby log_folder.rb
-ŠÂ‹«\’z©“®                          ruby install.rb
-‹@ŠBŠwKƒtƒ@ƒCƒ‹                      ruby skl_straight.rb
-ƒAƒ“ƒCƒ“ƒXƒg[ƒ‹                      ruby uninstall.rb
+è¾æ›¸èª­ã¿è¾¼ã¿                          Plug 'takkii/config' or $HOME/config
+realã®æŒ™å‹•                            $HOME/configã‚’èª­ã¿è¾¼ã¿æ™‚
+ãƒ­ã‚°ãƒ•ã‚©ãƒ«ãƒ€ä½œæˆ                      ruby log_folder.rb
+ç’°å¢ƒæ§‹ç¯‰è‡ªå‹•                          ruby install.rb
+æ©Ÿæ¢°å­¦ç¿’ãƒ•ã‚¡ã‚¤ãƒ«                      ruby skl_straight.rb
+ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«                      ruby uninstall.rb
 
 ==============================================================================
