@@ -9,7 +9,7 @@ License: MIT
 
 環境構築                              Python3, vim-plug, deoplete.nvim
 導入(vim-plug)                        Plug 'takkii/go_straight'
-設定(deoplete.nvim)                   :UpdateRemotePlugin
+設定(deoplete.nvim)                   :UpdateRemotePlugins
 依存解消                              pip3 install -r requirements.txt
 
 ==============================================================================
