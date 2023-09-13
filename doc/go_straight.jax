@@ -1,0 +1,25 @@
+*go_straight*
+
+version: 2023/09/13
+Author: takkii <karuma.reason@gmail.com>
+License: MIT
+
+==============================================================================
+*環境構築*
+
+環境構築                              Python3, vim-plug, deoplete.nvim
+導入(vim-plug)                        Plug 'takkii/go_straight'
+設定(deoplete.nvim)                   :UpdateRemotePlugin
+依存解消                              pip3 install -r requirements.txt
+
+==============================================================================
+*./go_straight*
+
+辞書読み込み                          Plug 'takkii/config' or $HOME/config
+realの挙動                            $HOME/configを読み込み時
+ログフォルダ作成                      ruby log_folder.rb
+環境構築自動                          ruby install.rb
+機械学習ファイル                      ruby skl_straight.rb
+アンインストール                      ruby uninstall.rb
+
+==============================================================================
