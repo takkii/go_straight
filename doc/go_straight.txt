@@ -21,7 +21,7 @@ Load dictionary                         Plug 'takkii/config' or $HOME/config
 Same behavior as real                   $HOME/config
 Create log folder                       ruby log_folder.rb
 Automatic environment construction      ruby install.rb
-Machine learning (prototype)            ruby skl_straight.rb
+Machine learning (prototype)            python skl_straight.py
 Uninstall($HOME/config)                 ruby uninstall.rb
 
 ==============================================================================
