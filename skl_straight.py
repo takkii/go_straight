@@ -33,7 +33,8 @@ def main():
 
             pd_ruby = pd.Series(data_main)
             s_r = pd_ruby.sort_index()
-            ddf = dd.from_pandas(data=s_r, npartitions=multiprocessing.cpu_count())
+            multi_pro = multiprocessing.cpu_count()
+            ddf = dd.from_pandas(data=s_r, npartitions=multi_pro)
             data_array = ddf.to_dask_array(lengths=True)
             data = data_array.compute()
             data_main = list(map(lambda s: s.rstrip(), data))
@@ -46,8 +47,9 @@ def main():
 
             x = feature_x.values
             y = data_dummies_x[3332].values
+            z = train_test_split(x, y, random_state=0)
 
-            x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0)
+            x_train, x_test, y_train, y_test = z
             logreg = LogisticRegression()
             logreg.fit(x_train, y_train)
 
@@ -109,7 +111,8 @@ def dev_main():
 
             pd_ruby = pd.Series(data_main)
             sort_r = pd_ruby.sort_index()
-            ddf = dd.from_pandas(data=sort_r, npartitions=multiprocessing.cpu_count())
+            multi_pro = multiprocessing.cpu_count()
+            ddf = dd.from_pandas(data=sort_r, npartitions=multi_pro)
             data_array = ddf.to_dask_array(lengths=True)
             data = data_array.compute()
             data_main = list(map(lambda s: s.rstrip(), data))
@@ -133,13 +136,14 @@ def dev_main():
 
             x = feature_x.values
             y = data_dummies_x[3332].values
+            z = train_test_split(x, y, random_state=0)
 
             # print("x.shape {} y.shape {}".format(x.shape, y.shape))
             # print(data_dummies_x.head())
 
             # print("\n")
 
-            x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0)
+            x_train, x_test, y_train, y_test = z
             logreg = LogisticRegression()
             logreg.fit(x_train, y_train)
 
