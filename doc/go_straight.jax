@@ -22,6 +22,6 @@ realと同じ動作                        $HOME/configを読み込み時
 ログフォルダ作成                      ruby log_folder.rb
 環境構築自動                          ruby install.rb
 機械学習(試作)                        python skl_straight.py
-アンインストール($HOME/config)        ruby uninstall.rb
+$HOME/configフォルダの削除            ruby uninstall.rb
 
 ==============================================================================
