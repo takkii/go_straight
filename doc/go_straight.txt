@@ -22,6 +22,6 @@ Same behavior as real                   $HOME/config
 Create log folder                       ruby log_folder.rb
 Automatic environment construction      ruby install.rb
 Machine learning (prototype)            python skl_straight.py
-$HOME/config delete folder              ruby uninstall.rb
+Delete Config folder and Requirements   ruby uninstall.rb
 
 ==============================================================================
