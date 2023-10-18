@@ -6,3 +6,5 @@ types-PyYAML
 pandas
 dask[complete]
 scikit-learn
+flake8
+mypy
