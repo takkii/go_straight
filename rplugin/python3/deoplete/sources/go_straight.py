@@ -22,16 +22,16 @@ class Source(Base):
 
     def __init__(self, vim):
         super().__init__(vim)
-        self.name = 'go_straight'
-        self.filetypes = ['ruby']
-        mark_synbol = [
-            '[GST]',  '[Go Straight]', 'go straight', 'GST',
+        self.name: Optional[str] = 'go_straight'
+        self.filetypes: Optional[list] = ['ruby']
+        mark_synbol: Optional[list] = [
+            '[GST]', '[Go_Straight]', 'GST', 'Go_Straight',
         ]
-        self.mark = str(random.choice(mark_synbol))
-        ruby_match = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
-        slash_no_match = [r'[;/[^¥/]\*/]']
-        self.input_pattern = '|'.join(ruby_match + slash_no_match)
-        self.rank = 500
+        self.mark: Optional[str] = str(random.choice(mark_synbol))
+        ruby_match: Optional[list] = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
+        slash_none: Optional[list] = [r'[;/[^¥/]\*/]']
+        self.input_pattern: Optional[str] = '|'.join(ruby_match + slash_none)
+        self.rank: Optional[int] = 500
 
     def get_complete_position(self, context):
         m = re.search('[a-zA-Z0-9_?!]*$', context['input'])
@@ -40,8 +40,8 @@ class Source(Base):
     def gather_candidates(self, context):
         try:
             # It doesn't support python4 yet.
-            py_major = sys.version_info[0]
-            py_minor = sys.version_info[1]
+            py_major: Optional[int] = sys.version_info[0]
+            py_minor: Optional[int] = sys.version_info[1]
 
             # 3.5 or higher python version is required.
             if py_major == 3 and py_minor > 4:
