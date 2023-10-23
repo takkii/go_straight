@@ -8,7 +8,7 @@ class Checker:
     def version(self):
         major: Optional[int] = sys.version_info[0]
         minor: Optional[int] = sys.version_info[1]
-        print("Version : " + str(major) + "." + str(minor) + " : ", id(self))
+        print("Python " + str(major) + "." + str(minor) + " :", id(self))
 
 
 # Unit Test.
@@ -27,10 +27,10 @@ class VersionTest(unittest.TestCase):
         print("setUp", id(self))
 
     def tearDown(self):
-        # self.checker.version()
+        self.checker.version()
         print("tearDown", id(self))
 
-    # Python Version 3.x
+    # Python Version: (3.x) < 4.0
     def test_check_major(self):
         py_major: Optional[int] = sys.version_info[0]
         major_calc = int(py_major)
@@ -38,7 +38,7 @@ class VersionTest(unittest.TestCase):
         print("test_check_major", id(self))
         self.assertLess(major_calc, set_major)
 
-    # Python Version x.11 or x.10
+    # Python Version: (x.11 or x.10) > 0
     def test_check_minor(self):
         py_minor: Optional[int] = sys.version_info[1]
         minor_calc = int(py_minor)
