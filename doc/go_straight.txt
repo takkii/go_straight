@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2023/09/13
+version: 2023/10/24
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -23,5 +23,6 @@ Create log folder                       ruby log_folder.rb
 Automatic environment construction      ruby install.rb
 Machine learning (prototype)            python skl_straight.py
 Delete Config folder and Requirements   ruby uninstall.rb
+Python version check (single)           python unit_test_run.py
 
 ==============================================================================

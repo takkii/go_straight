@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2023/09/13
+version: 2023/10/24
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -23,5 +23,6 @@ realと同じ動作                        $HOME/configを読み込み時
 環境構築自動                          ruby install.rb
 機械学習(試作)                        python skl_straight.py
 configフォルダ/requirements削除       ruby uninstall.rb
+Pythonバージョンチェック(単体)        python unit_test_run.py
 
 ==============================================================================
