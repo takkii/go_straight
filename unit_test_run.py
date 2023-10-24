@@ -38,11 +38,11 @@ class VersionTest(unittest.TestCase):
         print("test_check_major", id(self))
         self.assertLess(major_calc, set_major)
 
-    # Python Version: (x.11 or x.10) > 0
+    # Python Version: (x.11 or x.10) > 4
     def test_check_minor(self):
         py_minor: Optional[int] = sys.version_info[1]
         minor_calc = int(py_minor)
-        set_minor = int(0)
+        set_minor = int(4)
         print("test_check_minor", id(self))
         self.assertGreater(minor_calc, set_minor)
 
