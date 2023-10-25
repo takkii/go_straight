@@ -30,15 +30,15 @@ class VersionTest(unittest.TestCase):
         self.checker.version()
         print("tearDown", id(self))
 
-    # Python Version: (3.x) < 4.0
+    # Python Version: 3.x == 3.x
     def test_check_major(self):
         py_major: Optional[int] = sys.version_info[0]
         major_calc = int(py_major)
-        set_major = int(4)
+        set_major = int(3)
         print("test_check_major", id(self))
-        self.assertLess(major_calc, set_major)
+        self.assertEqual(major_calc, set_major)
 
-    # Python Version: (x.11 or x.10) > 4
+    # Python Version: (x.11 or x.10) > x.4
     def test_check_minor(self):
         py_minor: Optional[int] = sys.version_info[1]
         minor_calc = int(py_minor)
