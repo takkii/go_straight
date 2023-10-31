@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2023/10/24
+version: 2023/10/31
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -12,7 +12,7 @@ License: MIT
 設定(deoplete.nvim)                   :UpdateRemotePlugins
 依存解消                              pip3 install -r requirements.txt
 Python3.5 ≦  x ＜ Python4.0           Python3.5以上4.0未満を推奨します
-x = go_straight                       
+x = go_straight
 
 ==============================================================================
 *./go_straight*
@@ -23,6 +23,7 @@ realと同じ動作                        $HOME/configを読み込み時
 環境構築自動                          ruby install.rb
 機械学習(試作)                        python skl_straight.py
 configフォルダ/requirements削除       ruby uninstall.rb
-Pythonバージョンチェック(単体)        python unit_test_run.py
+バージョンチェック(Windows)           python pake.py
+バージョンチェック(UNIX)              ./pake
 
 ==============================================================================
