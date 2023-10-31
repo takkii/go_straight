@@ -25,4 +25,4 @@ jobs:
       # - name: Install dependencies
       #   run: pip install -r requirements.txt
       - name: Run Python
-        run: python pake.py
+        run: ./pake
