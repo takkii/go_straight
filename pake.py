@@ -1,15 +1,29 @@
-# Run, unit/xunit.py
+import gc
 
-print('----------------------------------------------------------------------')
+try:
+    print('---------------------------------------------------------------')
 
-with open('./unit/xunit.py') as xut:
-    xcmd = xut.read()
-    exec(xcmd)
+    # Run, unit/xunit.py
+    with open('./unit/xunit.py') as xut:
+        xcmd = xut.read()
+        exec(xcmd)
 
-print('----------------------------------------------------------------------')
+    print('---------------------------------------------------------------')
 
-# Run, unit/unit.py
+    # Run, unit/unit.py
+    with open('./unit/unit.py') as ut:
+        cmd = ut.read()
+        exec(cmd)
 
-with open('./unit/unit.py') as ut:
-    cmd = ut.read()
-    exec(cmd)
+except Exception as ext:
+    print(ext)
+    raise RuntimeError from None
+
+    # Custom Exception.
+except ValueError as ext:
+    print(ext)
+    raise RuntimeError from None
+
+finally:
+    # GC collection.
+    gc.collect()
