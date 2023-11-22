@@ -17,7 +17,7 @@ x = go_straight                         but less than 4.0 is recommended
 ==============================================================================
 *./go_straight*
 
-Load dictionary                         Plug 'takkii/config' or $HOME/config
+Load dictionary                         $HOME/config
 Create log folder                       ruby ./tools/log_folder.rb
 Automatic environment construction      ruby ./tools/install.rb
 Machine learning (prototype)            python ./lib/skl_straight.py
