@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2023/10/31
+version: 2023/11/22
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -17,12 +17,11 @@ x = go_straight                         but less than 4.0 is recommended
 ==============================================================================
 *./go_straight*
 
-Load dictionary                         Plug 'takkii/config' or $HOME/config
-Same behavior as real                   $HOME/config
-Create log folder                       ruby log_folder.rb
-Automatic environment construction      ruby install.rb
-Machine learning (prototype)            python skl_straight.py
-Delete Config folder and Requirements   ruby uninstall.rb
+Load dictionary                         $HOME/config
+Create log folder                       ruby ./tools/log_folder.rb
+Automatic environment construction      ruby ./tools/install.rb
+Machine learning (prototype)            python ./lib/skl_straight.py
+Delete Config folder and Requirements   ruby ./tools/uninstall.rb
 Python version check (Windows)          python pake.py
 Python version check (UNIX)             ./pake
 

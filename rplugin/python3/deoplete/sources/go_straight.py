@@ -45,35 +45,20 @@ class Source(Base):
 
             # 3.5 or higher python version is required.
             if py_major == 3 and py_minor > 4:
+
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
-                plug_config: Optional[
-                    str] = '~/.neovim/plugged/config/load.yml'
 
                 # Settings, Loading File PATH.
                 file_load: Optional[str] = 'Home_File'
-                plug_load: Optional[str] = 'File_Load'
 
                 # Home Folder, Set the dictionary.
                 if os.path.exists(os.path.expanduser(config_load)):
                     with open(os.path.expanduser(config_load)) as yml:
                         config = yaml.safe_load(yml)
 
-                    # Get Receiver/Real behavior.
-                    with open(os.path.expanduser(config[file_load])) as r_meth:
-                        data: Optional[list] = list(r_meth.readlines())
-                        data_ruby: Optional[list] = [s.rstrip() for s in data]
-                        complete: Optional[list] = data_ruby
-                        complete.sort(key=itemgetter(0))
-                        return complete
-
-                # Use vim-plug, Set the dictionary.
-                elif os.path.exists(os.path.expanduser(plug_config)):
-                    with open(os.path.expanduser(plug_config)) as yml:
-                        config = yaml.safe_load(yml)
-
                     # Get Receiver/go_straight behavior.
-                    with open(os.path.expanduser(config[plug_load])) as r_meth:
+                    with open(os.path.expanduser(config[file_load])) as r_meth:
                         # pandas and dask
                         index_ruby: Optional[list] = list(r_meth.readlines())
                         pd_ruby = pd.Series(index_ruby)
@@ -91,6 +76,7 @@ class Source(Base):
                 # Config Folder not found.
                 else:
                     raise ValueError("None, Please Check the Config Folder")
+
             # Python Version 3.5 ~, (<= 4.0)
             else:
                 raise ValueError("Python Version Check, 3.5 or higher.")

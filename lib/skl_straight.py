@@ -19,8 +19,8 @@ warnings.filterwarnings('ignore')
 def main():
     try:
         # Settings, use vim-plug path.
-        plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
-        plug_main: Optional[str] = 'File_Load'
+        plug_config: Optional[str] = '~/config/load.yml'
+        plug_main: Optional[str] = 'Home_File'
 
         # Use vim-plug, Set the dictionary.
         if os.path.exists(os.path.expanduser(plug_config)):
@@ -93,12 +93,8 @@ def main():
 def dev_main():
     try:
         # Settings, Comment out when using Home_File.
-        # plug_config: Optional[str] = '~/config/load.yml'
-        # plug_main: Optional[str] = 'Home_File'
-
-        # Settings, use vim-plug path.
-        plug_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
-        plug_main: Optional[str] = 'File_Load'
+        plug_config: Optional[str] = '~/config/load.yml'
+        plug_main: Optional[str] = 'Home_File'
 
         # Use vim-plug, Set the dictionary.
         if os.path.exists(os.path.expanduser(plug_config)):
