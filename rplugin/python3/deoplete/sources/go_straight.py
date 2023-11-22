@@ -59,13 +59,21 @@ class Source(Base):
                     with open(os.path.expanduser(config_load)) as yml:
                         config = yaml.safe_load(yml)
 
-                    # Get Receiver/Real behavior.
+                    # Get Receiver/go_straight behavior.
                     with open(os.path.expanduser(config[file_load])) as r_meth:
-                        data: Optional[list] = list(r_meth.readlines())
-                        data_ruby: Optional[list] = [s.rstrip() for s in data]
-                        complete: Optional[list] = data_ruby
-                        complete.sort(key=itemgetter(0))
-                        return complete
+                        # pandas and dask
+                        ruby_home: Optional[list] = list(r_meth.readlines())
+                        pd_ruby = pd.Series(ruby_home)
+                        st_r = pd_ruby.sort_index()
+                        ddf = dd.from_pandas(
+                            data=st_r, npartitions=multiprocessing.cpu_count())
+                        data_array = ddf.to_dask_array(lengths=True)
+                        data = data_array.compute()
+                        dt_py_home: Optional[list] = [s.rstrip() for s in data]
+
+                        # sort and itemgetter
+                        dt_py_home.sort(key=itemgetter(0))
+                        return dt_py_home
 
                 # Use vim-plug, Set the dictionary.
                 elif os.path.exists(os.path.expanduser(plug_config)):
