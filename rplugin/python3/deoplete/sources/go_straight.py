@@ -45,14 +45,12 @@ class Source(Base):
 
             # 3.5 or higher python version is required.
             if py_major == 3 and py_minor > 4:
+
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
-                plug_config: Optional[
-                    str] = '~/.neovim/plugged/config/load.yml'
 
                 # Settings, Loading File PATH.
                 file_load: Optional[str] = 'Home_File'
-                plug_load: Optional[str] = 'File_Load'
 
                 # Home Folder, Set the dictionary.
                 if os.path.exists(os.path.expanduser(config_load)):
@@ -61,27 +59,6 @@ class Source(Base):
 
                     # Get Receiver/go_straight behavior.
                     with open(os.path.expanduser(config[file_load])) as r_meth:
-                        # pandas and dask
-                        ruby_home: Optional[list] = list(r_meth.readlines())
-                        pd_ruby = pd.Series(ruby_home)
-                        st_r = pd_ruby.sort_index()
-                        ddf = dd.from_pandas(
-                            data=st_r, npartitions=multiprocessing.cpu_count())
-                        data_array = ddf.to_dask_array(lengths=True)
-                        data = data_array.compute()
-                        dt_py_home: Optional[list] = [s.rstrip() for s in data]
-
-                        # sort and itemgetter
-                        dt_py_home.sort(key=itemgetter(0))
-                        return dt_py_home
-
-                # Use vim-plug, Set the dictionary.
-                elif os.path.exists(os.path.expanduser(plug_config)):
-                    with open(os.path.expanduser(plug_config)) as yml:
-                        config = yaml.safe_load(yml)
-
-                    # Get Receiver/go_straight behavior.
-                    with open(os.path.expanduser(config[plug_load])) as r_meth:
                         # pandas and dask
                         index_ruby: Optional[list] = list(r_meth.readlines())
                         pd_ruby = pd.Series(index_ruby)
@@ -99,6 +76,7 @@ class Source(Base):
                 # Config Folder not found.
                 else:
                     raise ValueError("None, Please Check the Config Folder")
+
             # Python Version 3.5 ~, (<= 4.0)
             else:
                 raise ValueError("Python Version Check, 3.5 or higher.")
