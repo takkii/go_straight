@@ -1,7 +1,7 @@
 msgpack-python
 msgpack
 numpy
-pynvim
+pynvim == 0.4.3
 types-PyYAML
 pandas
 dask[complete]
