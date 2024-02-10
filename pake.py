@@ -5,11 +5,11 @@ from typing import Optional
 
 try:
     # It doesn't support python4 yet.
-    py_major: Optional[int] = sys.version_info[0]
-    py_minor: Optional[int] = sys.version_info[1]
+    py_mj: Optional[int] = sys.version_info[0]
+    py_mi: Optional[int] = sys.version_info[1]
 
-    # 3.5 or higher and 3.12 or less python version is required.
-    if (py_major == 3 and py_minor < 12) and (py_major == 3 and py_minor > 4):
+    # 3.5 or higher and 4.x or less python version is required.
+    if (py_mj < 4) and (py_mj == 3 and py_mi > 4):
         print('--------------------------------------------------------------')
 
         # Run, unit/xunit.py
@@ -24,9 +24,9 @@ try:
             cmd = ut.read()
             exec(cmd)
 
-    # Python_VERSION: 3.5 or higher and 3.12 or less.
+    # Python_VERSION: 3.5 or higher and 4.x or less.
     else:
-        raise ValueError("VERSION: 3.5 or higher and 3.12 or less")
+        raise ValueError("VERSION: 3.5 or higher and 4.x or less")
 
 except Exception as ext:
     print(ext)
