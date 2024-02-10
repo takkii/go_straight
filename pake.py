@@ -24,9 +24,9 @@ try:
             cmd = ut.read()
             exec(cmd)
 
-    # Python Version 3.12 or less.
+    # Python_VERSION: 3.5 or higher and 3.12 or less.
     else:
-        raise ValueError("Python Version Check, 3.12 or less.")
+        raise ValueError("VERSION: 3.5 or higher and 3.12 or less")
 
 except Exception as ext:
     print(ext)
