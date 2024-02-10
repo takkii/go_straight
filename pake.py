@@ -8,8 +8,8 @@ try:
     py_major: Optional[int] = sys.version_info[0]
     py_minor: Optional[int] = sys.version_info[1]
 
-    # 3.12 or less python version is required.
-    if py_major == 3 and py_minor < 12:
+    # 3.5 or higher and 3.12 or less python version is required.
+    if (py_major == 3 and py_minor < 12) and (py_major == 3 and py_minor > 4):
         print('--------------------------------------------------------------')
 
         # Run, unit/xunit.py
