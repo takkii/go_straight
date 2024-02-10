@@ -1,4 +1,4 @@
-import dask.dataframe as dd
+from dask.dataframe.io.io import from_pandas
 import gc
 import multiprocessing
 import os
@@ -34,7 +34,7 @@ def main():
             pd_ruby = pd.Series(data_main)
             s_r = pd_ruby.sort_index()
             multi_pro = multiprocessing.cpu_count()
-            ddf = dd.from_pandas(data=s_r, npartitions=multi_pro)
+            ddf = from_pandas(data=s_r, npartitions=multi_pro)
             data_array = ddf.to_dask_array(lengths=True)
             data = data_array.compute()
             data_main = list(map(lambda s: s.rstrip(), data))
