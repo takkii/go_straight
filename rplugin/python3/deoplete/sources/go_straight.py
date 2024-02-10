@@ -43,8 +43,8 @@ class Source(Base):
             py_mj: Optional[int] = sys.version_info[0]
             py_mi: Optional[int] = sys.version_info[1]
 
-            # 3.5 or higher and 3.12 or less python version is required.
-            if (py_mj == 3 and py_mi < 12) and (py_mj == 3 and py_mi > 4):
+            # 3.5 or higher and 4.x or less python version is required.
+            if (py_mj < 4) and (py_mj == 3 and py_mi > 4):
 
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
@@ -77,9 +77,9 @@ class Source(Base):
                 else:
                     raise ValueError("None, Please Check the Config Folder")
 
-            # Python_VERSION: 3.5 or higher and 3.12 or less.
+            # Python_VERSION: 3.5 or higher and 4.x or less.
             else:
-                raise ValueError("VERSION: 3.5 or higher and 3.12 or less")
+                raise ValueError("VERSION: 3.5 or higher and 4.x or less")
 
         # TraceBack.
         except Exception:
