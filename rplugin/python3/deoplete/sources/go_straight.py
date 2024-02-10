@@ -1,4 +1,4 @@
-import dask.dataframe as dd
+from dask.dataframe.io.io import from_pandas
 import gc
 import multiprocessing
 import os
@@ -63,7 +63,7 @@ class Source(Base):
                         index_ruby: Optional[list] = list(r_meth.readlines())
                         pd_ruby = pd.Series(index_ruby)
                         st_r = pd_ruby.sort_index()
-                        ddf = dd.from_pandas(
+                        ddf = from_pandas(
                             data=st_r, npartitions=multiprocessing.cpu_count())
                         data_array = ddf.to_dask_array(lengths=True)
                         data = data_array.compute()
@@ -77,9 +77,9 @@ class Source(Base):
                 else:
                     raise ValueError("None, Please Check the Config Folder")
 
-            # Python Version 3.5 ~, (<= 4.0)
+            # Python_VERSION: 3.5 or higher and 3.12 or less.
             else:
-                raise ValueError("Python Version Check, 3.5 or higher.")
+                raise ValueError("VERSION: 3.5 or higher and 3.12 or less")
 
         # TraceBack.
         except Exception:
