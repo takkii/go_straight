@@ -28,9 +28,9 @@ def main():
                     (13 * month + 8) / 5 + day) % 7
 
         week = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Stur"]
-        calc_week = week[int(calc)]
+        cl_wk = week[int(calc)]
 
-        print(st_year + "/" + st_month + "/" + st_day + " : " + calc_week)
+        print(st_year + "/" + st_month + "/" + st_day + " : " + cl_wk + "day")
 
     # Custom Exception.
     except ValueError as ext:
