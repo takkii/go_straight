@@ -12,6 +12,13 @@ try:
     if (py_mj < 4) and (py_mj == 3 and py_mi > 4):
         print('--------------------------------------------------------------')
 
+        # Run, unit/timestamp.py
+        with open('./unit/timestamp.py') as ti:
+            cmd = ti.read()
+            exec(cmd)
+
+        print('--------------------------------------------------------------')
+
         # Run, unit/xunit.py
         with open('./unit/xunit.py') as xut:
             xcmd = xut.read()
