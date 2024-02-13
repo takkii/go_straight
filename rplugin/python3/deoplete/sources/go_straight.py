@@ -25,7 +25,10 @@ class Source(Base):
         self.name: Optional[str] = 'go_straight'
         self.filetypes: Optional[list] = ['ruby']
         mark_synbol: Optional[list] = [
-            '[GST]', '[Go_Straight]', 'GST', 'Go_Straight',
+            '[GST]',
+            '[Go_Straight]',
+            'GST',
+            'Go_Straight',
         ]
         self.mark: Optional[str] = str(random.choice(mark_synbol))
         ruby_match: Optional[list] = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
@@ -43,8 +46,8 @@ class Source(Base):
             py_mj: Optional[int] = sys.version_info[0]
             py_mi: Optional[int] = sys.version_info[1]
 
-            # 3.5 or higher and 4.x or less python version is required.
-            if (py_mj < 4) and (py_mj == 3 and py_mi > 4):
+            # 3.5 and higher, 4.x or less,python version is required.
+            if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
 
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
@@ -79,7 +82,7 @@ class Source(Base):
 
             # Python_VERSION: 3.5 or higher and 4.x or less.
             else:
-                raise ValueError("VERSION: 3.5 or higher and 4.x or less")
+                raise ValueError("VERSION: 3.5 and higher, 4.x or less")
 
         # TraceBack.
         except Exception:
