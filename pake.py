@@ -8,8 +8,8 @@ try:
     py_mj: Optional[int] = sys.version_info[0]
     py_mi: Optional[int] = sys.version_info[1]
 
-    # 3.5 or higher and 4.x or less python version is required.
-    if (py_mj < 4) and (py_mj == 3 and py_mi > 4):
+    # 3.5 and higher, 4.x or less,python version is required.
+    if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
         print('--------------------------------------------------------------')
 
         # Run, unit/timestamp.py
