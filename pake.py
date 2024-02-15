@@ -35,8 +35,9 @@ try:
     else:
         raise ValueError("VERSION: 3.5 or higher and 4.x or less")
 
-except Exception as ext:
-    print(ext)
+# Custom Exception.
+except ValueError as e:
+    print(e)
     raise RuntimeError from None
 
 finally:
