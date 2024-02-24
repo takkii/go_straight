@@ -27,7 +27,7 @@ def main():
             calc = (year + year / 4 - year / 100 + year / 400 +
                     (13 * month + 8) / 5 + day) % 7
 
-        week = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Stur"]
+        week = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Satur"]
         cl_wk = week[int(calc)]
 
         print(st_year + "/" + st_month + "/" + st_day + " : " + cl_wk + "day")
