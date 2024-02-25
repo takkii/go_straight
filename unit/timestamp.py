@@ -1,7 +1,7 @@
 import datetime
 import gc
-import threading
 import re
+import threading
 
 
 def main():
