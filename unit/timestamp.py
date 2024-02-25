@@ -1,6 +1,7 @@
 import datetime
 import gc
 import threading
+import re
 
 
 def main():
@@ -13,11 +14,14 @@ def main():
         st_month = str(datetime.datetime.now().month)
         st_day = str(datetime.datetime.now().day)
 
+        two_month = bool(re.fullmatch("^[2]$", str(month)))
+        eleven_month = bool(re.fullmatch("^[11]$", str(month)))
+
         if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
-            if month == 2:
+            if two_month:
                 calc = ((365 * year + year / 4 - year / 100 + year / 400 +
                          (306 * (month + 1)) / 10 + day) - 426) % 7
-            elif month == 11:
+            elif eleven_month:
                 calc = ((365 * year + year / 4 - year / 100 + year / 400 +
                          (306 * (month + 1)) / 10 + day) - 427) % 7
             else:
