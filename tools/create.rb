@@ -4,7 +4,7 @@ require 'open3'
 require 'fileutils'
 
 # Installer runner.
-class InstallerRunner
+class CreateRunner
   # default encoding utf-8, change encode here.
   def self.encoding_style
     Encoding.default_internal = 'UTF-8'
@@ -18,13 +18,13 @@ class InstallerRunner
     else
       FileUtils.mkdir('go_straight_log')
       FileUtils.mv("#{File.dirname(__FILE__)}/go_straight_log", File.expand_path('~/'))
-      puts 'Created a go_straight_log folder.'
+      puts 'Created, go_straight_log folder.'
     end
   end
 end
 
 begin
-  InstallerRunner.run
+  CreateRunner.run
 rescue StandardError => e
   puts e.backtrace
 ensure
