@@ -3,7 +3,7 @@
 require 'open3'
 require 'fileutils'
 
-# Installer runner.
+# UnInstaller runner.
 class UnInstallerRunner
   # default encoding utf-8, change encode here.
   def self.encoding_style
