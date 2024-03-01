@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2023/11/22
+version: 2024/03/01
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -9,6 +9,7 @@ License: MIT
 
 Environment construction                Python3, vim-plug, deoplete.nvim
 Introduction (vim-plug)                 Plug 'takkii/go_straight'
+                                        Plug 'takkii/config'
 Settings (deoplete.nvim)                :UpdateRemotePlugins
 Dependency removal                      pip3 install -r requirements.txt
 Python3.5 ≦  x ＜ Python4.0             Python3.5 or higher
@@ -17,8 +18,9 @@ x = go_straight                         but less than 4.0 is recommended
 ==============================================================================
 *./go_straight*
 
-Load dictionary                         $HOME/config
-Create log folder                       ruby ./tools/log_folder.rb
+Load dictionary                         $HOME or vim-plug: Neovim/Vim
+Create log folder                       ruby ./tools/create.rb
+Delete log folder                       ruby ./tools/delete.rb
 Automatic environment construction      ruby ./tools/install.rb
 Machine learning (prototype)            python ./lib/skl_straight.py
 Delete Config folder and Requirements   ruby ./tools/uninstall.rb
