@@ -51,9 +51,13 @@ class Source(Base):
 
                 # Settings, Config path is true/false change.
                 config_load: Optional[str] = '~/config/load.yml'
+                neo_config: Optional[str] = '~/.neovim/plugged/config/load.yml'
+                vim_config: Optional[str] = '~/.vim/plugged/config/load.yml'
 
                 # Settings, Loading File PATH.
                 file_load: Optional[str] = 'Home_File'
+                neo_load: Optional[str] = 'VimPlug_Neovim'
+                vim_load: Optional[str] = 'VimPlug_Vim'
 
                 # Home Folder, Set the dictionary.
                 if os.path.exists(os.path.expanduser(config_load)):
@@ -72,9 +76,49 @@ class Source(Base):
                         data = data_array.compute()
                         data_py: Optional[list] = [s.rstrip() for s in data]
 
-                        # sort and itemgetter
-                        data_py.sort(key=itemgetter(0))
+                        # sorted and itemgetter
+                        sorted(data_py, key=itemgetter(0))
                         return data_py
+
+                elif os.path.exists(os.path.expanduser(neo_config)):
+                    with open(os.path.expanduser(neo_config)) as yml:
+                        config = yaml.safe_load(yml)
+
+                    # Get Receiver/go_straight behavior.
+                    with open(os.path.expanduser(config[neo_load])) as r_meth:
+                        # pandas and dask
+                        neo_ruby: Optional[list] = list(r_meth.readlines())
+                        pd_ruby = pd.Series(neo_ruby)
+                        st_r = pd_ruby.sort_index()
+                        ddf = from_pandas(
+                            data=st_r, npartitions=multiprocessing.cpu_count())
+                        data_array = ddf.to_dask_array(lengths=True)
+                        data = data_array.compute()
+                        neo_py: Optional[list] = [s.rstrip() for s in data]
+
+                        # sort and itemgetter
+                        neo_py.sort(key=itemgetter(0))
+                        return neo_py
+
+                elif os.path.exists(os.path.expanduser(vim_config)):
+                    with open(os.path.expanduser(vim_config)) as yml:
+                        config = yaml.safe_load(yml)
+
+                    # Get Receiver/go_straight behavior.
+                    with open(os.path.expanduser(config[vim_load])) as r_meth:
+                        # pandas and dask
+                        vim_ruby: Optional[list] = list(r_meth.readlines())
+                        pd_ruby = pd.Series(vim_ruby)
+                        st_r = pd_ruby.sort_index()
+                        ddf = from_pandas(
+                            data=st_r, npartitions=multiprocessing.cpu_count())
+                        data_array = ddf.to_dask_array(lengths=True)
+                        data = data_array.compute()
+                        vim_py: Optional[list] = [s.rstrip() for s in data]
+
+                        # sort and itemgetter
+                        vim_py.sort(key=itemgetter(0))
+                        return vim_py
 
                 # Config Folder not found.
                 else:
