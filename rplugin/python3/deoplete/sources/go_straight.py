@@ -80,6 +80,7 @@ class Source(Base):
                         sorted(data_py, key=itemgetter(0))
                         return data_py
 
+                # Neovim Folder, Set the dictionary.
                 elif os.path.exists(os.path.expanduser(neo_config)):
                     with open(os.path.expanduser(neo_config)) as yml:
                         config = yaml.safe_load(yml)
@@ -100,6 +101,7 @@ class Source(Base):
                         neo_py.sort(key=itemgetter(0))
                         return neo_py
 
+                # Vim Folder, Set the dictionary.
                 elif os.path.exists(os.path.expanduser(vim_config)):
                     with open(os.path.expanduser(vim_config)) as yml:
                         config = yaml.safe_load(yml)
