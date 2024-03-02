@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2024/03/01
+version: 2024/03/02
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -21,9 +21,7 @@ x = go_straight
 辞書読み込み                          $HOME or vim-plug: Neovim/Vim
 ログフォルダ作成                      ruby ./tools/create.rb
 ログフォルダ削除                      ruby ./tools/delete.rb
-環境構築自動                          ruby ./tools/install.rb
 機械学習(試作)                        python ./lib/skl_straight.py
-configフォルダ/requirements削除       ruby ./tools/uninstall.rb
 バージョンチェック(Windows)           python pake.py
 バージョンチェック(UNIX)              ./pake
 
