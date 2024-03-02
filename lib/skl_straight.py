@@ -1,5 +1,7 @@
 from dask.dataframe.io.io import from_pandas
+from dask.distributed import Client
 import gc
+import joblib
 import multiprocessing
 import os
 import pandas as pd
@@ -31,29 +33,36 @@ def main():
             with open(os.path.expanduser(config[plug_main])) as r_meth:
                 data_main = list(r_meth.readlines())
 
-            pd_ruby = pd.Series(data_main)
-            s_r = pd_ruby.sort_index()
-            multi_pro = multiprocessing.cpu_count()
-            ddf = from_pandas(data=s_r, npartitions=multi_pro)
-            data_array = ddf.to_dask_array(lengths=True)
-            data = data_array.compute()
-            data_main = list(map(lambda s: s.rstrip(), data))
+                # create local cluster
+                client = Client(processes=False)
 
-            le = LabelEncoder()
-            le.fit(data_main)
-            data_num = le.transform(data_main)
-            data_dummies_x = pd.get_dummies(data_num)
-            feature_x = data_dummies_x.loc[:, '0':'3332']  # type: ignore[misc]
+                # client = Client("scheduler-address:8786")
+                # or connect to remote cluster
 
-            x = feature_x.values
-            y = data_dummies_x[3332].values
-            z = train_test_split(x, y, random_state=0)
+                with joblib.parallel_backend('dask'):
+                    pd_ruby = pd.Series(data_main)
+                    s_r = pd_ruby.sort_index()
+                    multi_pro = multiprocessing.cpu_count()
+                    ddf = from_pandas(data=s_r, npartitions=multi_pro)
+                    data_array = ddf.to_dask_array(lengths=True)
+                    data = data_array.compute()
+                    data_main = list(map(lambda s: s.rstrip(), data))
 
-            x_train, x_test, y_train, y_test = z
-            logreg = LogisticRegression()
-            logreg.fit(x_train, y_train)
+                    le = LabelEncoder()
+                    le.fit(data_main)
+                    data_num = le.transform(data_main)
+                    data_dummies_x = pd.get_dummies(data_num)
+                    feature_x = data_dummies_x.loc[:, '0':'3332']  # type: ignore[misc]
 
-            print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
+                    x = feature_x.values
+                    y = data_dummies_x[3332].values
+                    z = train_test_split(x, y, random_state=0)
+
+                    x_train, x_test, y_train, y_test = z
+                    logreg = LogisticRegression()
+                    logreg.fit(x_train, y_train)
+
+                    print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
 
         # Config Folder not found.
         else:
