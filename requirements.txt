@@ -6,5 +6,6 @@ types-PyYAML
 pandas
 dask[complete]
 scikit-learn
+joblib
 flake8
 mypy
