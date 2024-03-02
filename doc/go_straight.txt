@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2024/03/01
+version: 2024/03/02
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -21,9 +21,7 @@ x = go_straight                         but less than 4.0 is recommended
 Load dictionary                         $HOME or vim-plug: Neovim/Vim
 Create log folder                       ruby ./tools/create.rb
 Delete log folder                       ruby ./tools/delete.rb
-Automatic environment construction      ruby ./tools/install.rb
 Machine learning (prototype)            python ./lib/skl_straight.py
-Delete Config folder and Requirements   ruby ./tools/uninstall.rb
 Python version check (Windows)          python pake.py
 Python version check (UNIX)             ./pake
 
