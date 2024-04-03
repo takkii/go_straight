@@ -52,7 +52,8 @@ def main():
                     le.fit(data_main)
                     data_num = le.transform(data_main)
                     data_dummies_x = pd.get_dummies(data_num)
-                    feature_x = data_dummies_x.loc[:, '0':'3332']  # type: ignore[misc]
+                    feature_x = data_dummies_x.loc[:, '0':
+                                                   '3332']  # type: ignore[misc]
 
                     x = feature_x.values
                     y = data_dummies_x[3332].values
@@ -62,7 +63,9 @@ def main():
                     logreg = LogisticRegression()
                     logreg.fit(x_train, y_train)
 
-                    print(f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n")
+                    print(
+                        f"テストスコア: {round(logreg.score(x_test, y_test)*100)}%\n"
+                    )
 
         # Config Folder not found.
         else:
