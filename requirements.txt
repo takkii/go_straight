@@ -1,11 +1,9 @@
 msgpack-python
 msgpack
 numpy
-pynvim == 0.4.3
+pynvim
 types-PyYAML
 pandas
 dask[complete]
 scikit-learn
 joblib
-flake8
-mypy
