@@ -5,8 +5,8 @@ from typing import Optional
 
 try:
     # It doesn't support python4 yet.
-    py_mj: Optional[int] = sys.version_info[0]
-    py_mi: Optional[int] = sys.version_info[1]
+    py_mj = sys.version_info[0]
+    py_mi = sys.version_info[1]
 
     # 3.5 and higher, 4.x or less,python version is required.
     if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
