@@ -1,8 +1,6 @@
 import gc
 import sys
 
-from typing import Optional
-
 try:
     # It doesn't support python4 yet.
     py_mj = sys.version_info[0]
