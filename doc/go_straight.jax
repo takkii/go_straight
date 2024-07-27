@@ -1,6 +1,6 @@
 *go_straight*
 
-version: 2024/03/02
+version: 2024/07/27
 Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
@@ -8,21 +8,23 @@ License: MIT
 *環境構築*
 
 環境構築                              Python3, vim-plug, deoplete.nvim
-導入(vim-plug)                        Plug 'takkii/go_straight'
-                                      Plug 'takkii/config'
-設定(deoplete.nvim)                   :UpdateRemotePlugins
+
+vim-plug使用
+Plug 'takkii/go_straight'
+Plug 'takkii/config'
+
+設定(deoplete.nvim)                  :UpdateRemotePlugins
 依存解消                              pip3 install -r requirements.txt
-Python3.5 ≦  x ＜ Python4.0           Python3.5以上4.0未満を推奨します
+Python3.5 ≦  x ＜ Python4.0         Python3.5以上4.0未満を推奨します
 x = go_straight
 
 ==============================================================================
 *./go_straight*
 
 辞書読み込み                          $HOME or vim-plug: Neovim/Vim
-ログフォルダ作成                      ruby ./tools/create.rb
-ログフォルダ削除                      ruby ./tools/delete.rb
+ログフォルダ操作(作成/削除)             ruby ./tools/cleaner.rb
 機械学習(試作)                        python ./lib/skl_straight.py
-バージョンチェック(Windows)           python pake.py
-バージョンチェック(UNIX)              ./pake
+バージョンチェック(Windows)            python pake.py
+バージョンチェック(UNIX)               ./pake
 
 ==============================================================================
