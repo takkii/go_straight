@@ -5,7 +5,7 @@ Author: takkii <karuma.reason@gmail.com>
 License: MIT
 
 ==============================================================================
-*環境構築*
+*Environment*
 
 環境構築                              Python3, vim-plug, deoplete.nvim
 vim-plug使用                          Plug 'takkii/go_straight'
