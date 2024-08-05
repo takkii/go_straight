@@ -1,5 +1,6 @@
 import datetime
 import gc
+import math
 import re
 import threading
 
@@ -26,7 +27,7 @@ def main():
                          (306 * (month + 1)) / 10 + day) - 427) % 7
             else:
                 calc = ((365 * year + year / 4 - year / 100 + year / 400 +
-                         (306 * (month + 1)) / 10 + day) - 428) % 6
+                         (306 * (month + 1)) / 10 + day) - 428) % 7
         else:
             calc = (year + year / 4 - year / 100 + year / 400 +
                     (13 * month + 8) / 5 + day) % 7
@@ -40,7 +41,7 @@ def main():
 
         # 0=Sun, 1=Mon, 2=Tues, 3=Wedness, 4=Thurs, 5=Fri, 6=Saturs, 7=Sun
         wk = ["Sun", "Mon", "Tues", "Wedness", "Thurs", "Fri", "Satur", "Sun"]
-        cl_wk = wk[round(calc)]
+        cl_wk = wk[math.floor(calc)]
 
         st_wk = wk[int(st_calc)]
         week_bl = bool(cl_wk == st_wk)
